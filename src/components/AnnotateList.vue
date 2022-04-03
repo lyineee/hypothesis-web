@@ -3,7 +3,7 @@
     <div class="page-item" v-for="(page, index) in data" :key="index">
       <AnnotatePage :data="page" />
     </div>
-    <Pagenation :total="15" @pageUpdate="pageUpdate($event)" />
+    <Pagenation :total="totalPage" @pageUpdate="pageUpdate($event)" />
   </div>
 </template>
 
@@ -22,7 +22,8 @@ import Pagenation from "./Pagination.vue";
 })
 export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   data: Array<Array<any>> = [];
-  pageSize = 10;
+  pageSize = 15;
+  totalPage = 1;
   pageUpdate(page: number) {
     this.data = [];
     this.getList(
@@ -30,6 +31,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
       (page - 1) * this.pageSize,
       this.pageSize
     ).then((rawData) => {
+      this.totalPage = Math.ceil(rawData.total / this.pageSize);
       let prevUri = "";
       let pageList = [];
       for (let anno of rawData.rows) {
@@ -43,21 +45,6 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
       pageList.length != 0 ? this.data.push(pageList) : "";
     });
   }
-  created() {
-    // this.getList("acct:liuzhengyuan@hypothes.is", 0, 20).then((rawData) => {
-    //   let prevUri = "";
-    //   let pageList = [];
-    //   for (let anno of rawData.rows) {
-    //     if (anno.uri != prevUri) {
-    //       pageList.length != 0 ? this.data.push(pageList) : "";
-    //       pageList = [];
-    //       prevUri = anno.uri;
-    //     }
-    //     pageList.push(anno);
-    //   }
-    //   pageList.length != 0 ? this.data.push(pageList) : "";
-    // });
-  }
 }
 </script>
 
@@ -67,9 +54,17 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   border: solid 1px hsla(0, 0%, 61%, 0.234);
   margin-left: 10%;
   margin-right: 30%;
+  @media print {
+    margin: 0px;
+    border: none;
+  }
+  @media screen and (max-width: 900px) {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
   padding: 2em;
   .page-item {
-    padding-bottom: 2em;
+    padding-bottom: 0.5em;
     position: relative;
     &::after {
       content: "";

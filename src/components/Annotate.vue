@@ -72,7 +72,7 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
     this.updateAnnotation(this.data.id, JSON.stringify(updatePayload))
       .then((resp) => {
         if (!resp.ok) {
-            //TODO handle error
+          //TODO handle error
           console.error("update error", resp.status, resp.statusText);
           this.tags = Array.from(this.data.tags);
           this.note = this.data.text;
@@ -83,9 +83,9 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
         this.tags = Array.from(value.tags);
         this.note = value.text;
       })
-      .catch(err=>{
-          console.log("error occur", err)
-      })
+      .catch((err) => {
+        console.log("error occur", err);
+      });
   }
   onTagsChange(tags: Array<string>) {
     console.log(tags);
@@ -105,7 +105,6 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
 
 <style scoped lang="scss">
 .annotation-content {
-  margin-top: 1em;
   .quote-content {
     font-size: 0.9em;
     font-style: italic;
@@ -114,14 +113,14 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
     text-align: start;
     width: 70%;
     border-left: solid 3.5px hsla(209, 0%, 64%, 0.5);
-    &:hover {
-      border-left: solid 3.5px hsl(204, 100%, 80%);
-    }
   }
   .btn-container {
     padding: 0.3em 0.5em 0.3em 0em;
     display: flex;
     justify-content: flex-end;
+    @media print {
+      display: none;
+    }
     button {
       margin: 0px 0.5em 0 0;
       padding: 0.3em 1em;
@@ -144,11 +143,15 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
       }
     }
     .edit {
+      position: relative;
+      top: -0.3em;
       height: 1.3em;
-      // background-color: hsl(0, 0%, 20%);
       background-color: inherit;
       color: hsl(0, 0%, 70%);
       padding: 0;
+      @media (hover: hover) {
+        opacity: 0; // hide edit icon when device can hover
+      }
       &:hover {
         background-color: inherit;
         svg {
@@ -167,6 +170,16 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
       &:hover {
         background-color: hsl(0, 0%, 20%);
       }
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      .edit {
+        opacity: 1; // show edit icon when hover to anntation
+      }
+    }
+    .quote-content {
+      border-left: solid 3.5px hsl(204, 100%, 80%); // hight light quote content when hover
     }
   }
 }

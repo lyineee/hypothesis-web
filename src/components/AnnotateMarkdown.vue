@@ -54,6 +54,10 @@ export default class AnnotateMarkdown extends Vue {
   }
   pre {
     overflow: auto;
+    @media print{
+      overflow: hidden;
+      white-space: normal;
+    }
   }
 }
 .note-edit {

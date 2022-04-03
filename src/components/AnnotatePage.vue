@@ -61,12 +61,14 @@ export default class AnnotatePage extends Vue {
   }
   .anno-count {
     position: relative;
+    user-select: none;
     top: 2px;
   }
 }
 .anno-link {
   text-align: start;
   margin-top: -1em;
+  margin-bottom: .7em;
   font-size: 0.9em;
   color: hsl(0, 0%, 52%);
   .link {

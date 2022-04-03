@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import AnnotateList from './components/AnnotateList.vue'
+import { Component, Vue } from "vue-property-decorator";
+import AnnotateList from "./components/AnnotateList.vue";
 //import HelloWorld from './components/HelloWorld.vue';
 
 @Component({
@@ -26,5 +26,8 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  @media print {
+    margin: 0px;
+  }
 }
 </style>

@@ -19,13 +19,8 @@
         </div>
       </div>
     </div>
-    <div class="new-tag">
-      <input
-        type="text"
-        v-if="edit"
-        v-model="newTag"
-        @keydown.enter="pushTag(newTag)"
-      />
+    <div v-if="edit" class="new-tag">
+      <input type="text" v-model="newTag" @keydown.enter="pushTag(newTag)" />
     </div>
   </div>
 </template>
@@ -43,15 +38,15 @@ export default class AnnotateTags extends Vue {
     this.syncTags.splice(this.syncTags.indexOf(tag), 1);
   }
   pushTag(val: string) {
-    this.syncTags.push(val)
+    this.syncTags.push(val);
     this.newTag = "";
   }
 }
 </script>
 
 <style scoped lang="scss">
-.tag-container{
-  margin: .7em 0em;
+.tag-container {
+  margin: 0.5em 0em;
 }
 .tag-space {
   // padding: 0.3em;
@@ -61,6 +56,9 @@ export default class AnnotateTags extends Vue {
     margin: 0 0.3em;
     padding: 0.2em 0.5em;
     display: flex;
+    @media print{
+      border: solid .3px hsl(0,0%,70%);
+    }
     .delete-span {
       padding-left: 0.3em;
       border-left: solid 0.2px;
@@ -74,7 +72,7 @@ export default class AnnotateTags extends Vue {
   }
 }
 .new-tag {
-  margin: .5em 1em 0em 0em;
+  margin: 0.5em 1em 0em 0em;
   input {
     font-weight: normal;
     font-size: 13px;
