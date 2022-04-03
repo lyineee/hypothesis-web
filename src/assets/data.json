@@ -1,0 +1,1207 @@
+{
+    "total": 575,
+    "rows": [
+        {
+            "id": "qtTBCI1oEey2A59GFoo0Qg",
+            "created": "2022-02-14T07:35:22.353845+00:00",
+            "updated": "2022-02-14T07:35:22.353845+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://docs.oracle.com/cd/E24847_01/html/819-7061/rbac-1.html",
+            "text": "# RBAC 基于角色的访问控制 \n asdfsf\n 1. adsfasdf\n 2. adfklak\n 3. jkljklfs\n ```bash\n for i in docker ps -q;do\n docker rm $i;\ndone\nlonggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg\n```\n",
+            "tags": ["linux", "tag1", "tag2"],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://docs.oracle.com/cd/E24847_01/html/819-7061/rbac-1.html"
+                }
+            ],
+            "document": {
+                "title": [
+                    "基于角色的访问控制（概述） - 系统管理指南：安全性服务"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/qtTBCI1oEey2A59GFoo0Qg",
+                "incontext": "https://hyp.is/qtTBCI1oEey2A59GFoo0Qg/docs.oracle.com/cd/E24847_01/html/819-7061/rbac-1.html",
+                "json": "https://hypothes.is/api/annotations/qtTBCI1oEey2A59GFoo0Qg"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "Br0a5o1qEeyushubONcLkw",
+            "created": "2022-02-14T07:45:06.005942+00:00",
+            "updated": "2022-02-14T07:45:06.005942+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://en.wikipedia.org/wiki/Persistent_data_structure",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://en.wikipedia.org/wiki/Persistent_data_structure",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 167,
+                            "startOffset": 0,
+                            "endContainer": "/div[3]/div[3]/div[5]/div[1]/p[1]",
+                            "startContainer": "/div[3]/div[3]/div[5]/div[1]/p[1]"
+                        },
+                        {
+                            "end": 651,
+                            "type": "TextPositionSelector",
+                            "start": 484
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "In computing, a persistent data structure or not ephemeral data structure is a data structure that always preserves the previous version of itself when it is modified.",
+                            "prefix": "nfused with Persistent storage.\n",
+                            "suffix": " Such data structures are effect"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Persistent data structure - Wikipedia"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/Br0a5o1qEeyushubONcLkw",
+                "incontext": "https://hyp.is/Br0a5o1qEeyushubONcLkw/en.wikipedia.org/wiki/Persistent_data_structure",
+                "json": "https://hypothes.is/api/annotations/Br0a5o1qEeyushubONcLkw"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "YSUZzo11Eey211PnvMWT4w",
+            "created": "2022-02-14T09:06:22.174318+00:00",
+            "updated": "2022-02-14T09:06:22.174318+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://zhuanlan.zhihu.com/p/28075841",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://zhuanlan.zhihu.com/p/28075841",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 105,
+                            "startOffset": 28,
+                            "endContainer": "/div[1]/div[1]/main[1]/div[1]/article[1]/div[1]/div[1]/div[1]/p[6]",
+                            "startContainer": "/div[1]/div[1]/main[1]/div[1]/article[1]/div[1]/div[1]/div[1]/p[6]"
+                        },
+                        {
+                            "end": 1065,
+                            "type": "TextPositionSelector",
+                            "start": 988
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "Logging即是记录处理的离散事件，比如我们应用的调试信息或者错误信息等发送到ES；审计跟踪时间信息通过Kafka处理送到BigTable等数据仓储等等",
+                            "prefix": "2\"/>日志，什么是日志，不知道大家有没有想过它的定义或者边界。",
+                            "suffix": "，大多数情况下记录的数据很分散，并且相互独立，也许是错误信息，也"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Logging,Metrics 和 Tracing"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/YSUZzo11Eey211PnvMWT4w",
+                "incontext": "https://hyp.is/YSUZzo11Eey211PnvMWT4w/zhuanlan.zhihu.com/p/28075841",
+                "json": "https://hypothes.is/api/annotations/YSUZzo11Eey211PnvMWT4w"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "aFn7ao11EeyLggctrHOooA",
+            "created": "2022-02-14T09:06:34.276268+00:00",
+            "updated": "2022-02-14T09:06:34.276268+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://zhuanlan.zhihu.com/p/28075841",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://zhuanlan.zhihu.com/p/28075841",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 127,
+                            "startOffset": 115,
+                            "endContainer": "/div[1]/div[1]/main[1]/div[1]/article[1]/div[1]/div[1]/div[1]/p[6]",
+                            "startContainer": "/div[1]/div[1]/main[1]/div[1]/article[1]/div[1]/div[1]/div[1]/p[6]"
+                        },
+                        {
+                            "end": 1087,
+                            "type": "TextPositionSelector",
+                            "start": 1075
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "数据很分散，并且相互独立",
+                            "prefix": "fka处理送到BigTable等数据仓储等等，大多数情况下记录的",
+                            "suffix": "，也许是错误信息，也许仅仅只是记录当前的事件状态，或者是警告信息"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Logging,Metrics 和 Tracing"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/aFn7ao11EeyLggctrHOooA",
+                "incontext": "https://hyp.is/aFn7ao11EeyLggctrHOooA/zhuanlan.zhihu.com/p/28075841",
+                "json": "https://hypothes.is/api/annotations/aFn7ao11EeyLggctrHOooA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "dNlz3o11Eey2n2dA8JsNDg",
+            "created": "2022-02-14T09:06:55.222583+00:00",
+            "updated": "2022-02-14T09:06:55.222583+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://zhuanlan.zhihu.com/p/28075841",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://zhuanlan.zhihu.com/p/28075841",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 193,
+                            "startOffset": 0,
+                            "endContainer": "/div[1]/div[1]/main[1]/div[1]/article[1]/div[1]/div[1]/div[1]/p[8]",
+                            "startContainer": "/div[1]/div[1]/main[1]/div[1]/article[1]/div[1]/div[1]/div[1]/p[8]/b[1]"
+                        },
+                        {
+                            "end": 1315,
+                            "type": "TextPositionSelector",
+                            "start": 1193
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "可聚合性即是Metrics的特征，它们是一段时间内某个度量（计数器或者直方图）的原子或者是元数据。例如接收的HTTP数量可以被建模为计数器，每次的HTTP请求即是我们的度量元数据，可以进行简单的加法聚合，当持续了一段时间我们又可以建模为直方图。",
+                            "prefix": "能需要将一部分事件进行聚合或计数，也就是我们说的Metrics。",
+                            "suffix": "Logging是处理请求范围内的信息，即可以绑定到系统中单个事务"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Logging,Metrics 和 Tracing"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/dNlz3o11Eey2n2dA8JsNDg",
+                "incontext": "https://hyp.is/dNlz3o11Eey2n2dA8JsNDg/zhuanlan.zhihu.com/p/28075841",
+                "json": "https://hypothes.is/api/annotations/dNlz3o11Eey2n2dA8JsNDg"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "gXEKmpraEeytldNxCQIFxA",
+            "created": "2022-03-03T10:13:00.593725+00:00",
+            "updated": "2022-03-03T10:13:00.593725+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+            "text": "# container standard\n![](https://www.tutorialworks.com/assets/images/container-ecosystem.drawio.png)",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/"
+                }
+            ],
+            "document": {
+                "title": [
+                    "The differences between Docker, containerd, CRI-O and runc"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/gXEKmpraEeytldNxCQIFxA",
+                "incontext": "https://hyp.is/gXEKmpraEeytldNxCQIFxA/www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+                "json": "https://hypothes.is/api/annotations/gXEKmpraEeytldNxCQIFxA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "fiQz0JrfEeycdTNAVvQxTA",
+            "created": "2022-03-03T10:48:42.585556+00:00",
+            "updated": "2022-03-03T10:48:42.585556+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 0,
+                            "startOffset": 0,
+                            "endContainer": "/main[1]/section[1]/article[1]/p[45]",
+                            "startContainer": "/main[1]/section[1]/article[1]/p[44]/strong[1]"
+                        },
+                        {
+                            "end": 12556,
+                            "type": "TextPositionSelector",
+                            "start": 12414
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "The OCI is a group of tech companies who maintain a specification for the container image format, and how containers should be run.\n          ",
+                            "prefix": "iner Initiative (OCI)\n          ",
+                            "suffix": "The idea behind the OCI is that "
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "The differences between Docker, containerd, CRI-O and runc"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/fiQz0JrfEeycdTNAVvQxTA",
+                "incontext": "https://hyp.is/fiQz0JrfEeycdTNAVvQxTA/www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+                "json": "https://hypothes.is/api/annotations/fiQz0JrfEeycdTNAVvQxTA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "kzvELJrfEeydTifNEiZ0nQ",
+            "created": "2022-03-03T10:49:17.938179+00:00",
+            "updated": "2022-03-03T10:49:17.938179+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 50,
+                            "startOffset": 0,
+                            "endContainer": "/main[1]/section[1]/article[1]/p[49]",
+                            "startContainer": "/main[1]/section[1]/article[1]/p[49]/i[1]"
+                        },
+                        {
+                            "end": 13262,
+                            "type": "TextPositionSelector",
+                            "start": 13212
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "runc is called the reference implementation of OCI",
+                            "prefix": " container processes.\n          ",
+                            "suffix": ".\n          \n            \n      "
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "The differences between Docker, containerd, CRI-O and runc"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/kzvELJrfEeydTifNEiZ0nQ",
+                "incontext": "https://hyp.is/kzvELJrfEeydTifNEiZ0nQ/www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/",
+                "json": "https://hypothes.is/api/annotations/kzvELJrfEeydTifNEiZ0nQ"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "s1iJWJroEey1oztF0drvjA",
+            "created": "2022-03-03T11:54:37.278773+00:00",
+            "updated": "2022-03-03T11:54:37.278773+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://www.tutorialworks.com/devops/",
+            "text": "# DevOps",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://www.tutorialworks.com/devops/"
+                }
+            ],
+            "document": {
+                "title": [
+                    "DevOps: What is it, and what do you need to know?"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/s1iJWJroEey1oztF0drvjA",
+                "incontext": "https://hyp.is/s1iJWJroEey1oztF0drvjA/www.tutorialworks.com/devops/",
+                "json": "https://hypothes.is/api/annotations/s1iJWJroEey1oztF0drvjA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "7YLIIpuJEeynE78RH6yHSA",
+            "created": "2022-03-04T07:08:43.802053+00:00",
+            "updated": "2022-03-04T07:08:43.802053+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://stackoverflow.com/questions/5543490/json-naming-convention-snake-case-camelcase-or-pascalcase",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://stackoverflow.com/questions/5543490/json-naming-convention-snake-case-camelcase-or-pascalcase",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 203,
+                            "startOffset": 66,
+                            "endContainer": "/div[4]/div[2]/div[1]/div[1]/div[3]/div[3]/div[7]/div[1]/div[2]/div[1]/p[1]",
+                            "startContainer": "/div[4]/div[2]/div[1]/div[1]/div[3]/div[3]/div[7]/div[1]/div[2]/div[1]/p[1]"
+                        },
+                        {
+                            "end": 30205,
+                            "type": "TextPositionSelector",
+                            "start": 30068
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "(\"Pascal/Microsoft\", \"Java\" (camelCase) and \"C\" (underscores, snake_case)) -- as well as at least one more, kebab-case like longer-name).",
+                            "prefix": " have seen 3 styles you mention ",
+                            "suffix": "\n\nIt mostly seems to depend on w"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "JSON Naming Convention (snake_case, camelCase or PascalCase)"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/7YLIIpuJEeynE78RH6yHSA",
+                "incontext": "https://hyp.is/7YLIIpuJEeynE78RH6yHSA/stackoverflow.com/questions/5543490/json-naming-convention-snake-case-camelcase-or-pascalcase",
+                "json": "https://hypothes.is/api/annotations/7YLIIpuJEeynE78RH6yHSA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "s0YKiJu8EeyiDft20P63CA",
+            "created": "2022-03-04T13:12:10.466084+00:00",
+            "updated": "2022-03-04T13:12:10.466084+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 73,
+                            "startOffset": 0,
+                            "endContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[6]",
+                            "startContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[6]/code[1]"
+                        },
+                        {
+                            "end": 11473,
+                            "type": "TextPositionSelector",
+                            "start": 11401
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "CTRL + U —(zsh)\tIf you're using the zsh, this will clear the entire line",
+                            "prefix": "re the current cursor position\n ",
+                            "suffix": "\n CTRL + K — Clear the character"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Shortcuts to Improve Your Bash & Zsh Productivity"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/s0YKiJu8EeyiDft20P63CA",
+                "incontext": "https://hyp.is/s0YKiJu8EeyiDft20P63CA/gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                "json": "https://hypothes.is/api/annotations/s0YKiJu8EeyiDft20P63CA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "tTT3vpu8Eey_10cEaW1FAw",
+            "created": "2022-03-04T13:12:13.749802+00:00",
+            "updated": "2022-03-04T13:12:13.749802+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 86,
+                            "startOffset": 0,
+                            "endContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[5]",
+                            "startContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[5]/code[1]"
+                        },
+                        {
+                            "end": 11399,
+                            "type": "TextPositionSelector",
+                            "start": 11314
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "CTRL + U — (bash)\tClear the characters on the line before the current cursor position",
+                            "prefix": " some systems this is ALT + F)\n ",
+                            "suffix": "\n CTRL + U —(zsh)\tIf you're usin"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Shortcuts to Improve Your Bash & Zsh Productivity"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/tTT3vpu8Eey_10cEaW1FAw",
+                "incontext": "https://hyp.is/tTT3vpu8Eey_10cEaW1FAw/gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                "json": "https://hypothes.is/api/annotations/tTT3vpu8Eey_10cEaW1FAw"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "twmPAJu8EeyssYfP9ZwBRQ",
+            "created": "2022-03-04T13:12:16.794517+00:00",
+            "updated": "2022-03-04T13:12:16.794517+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 39,
+                            "startOffset": 0,
+                            "endContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[2]",
+                            "startContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[2]/code[1]"
+                        },
+                        {
+                            "end": 11152,
+                            "type": "TextPositionSelector",
+                            "start": 11114
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "CTRL + E — Move to the end of the line",
+                            "prefix": "e to the beginning of the line\n ",
+                            "suffix": "\n CTRL + [left arrow] — Move one"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Shortcuts to Improve Your Bash & Zsh Productivity"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/twmPAJu8EeyssYfP9ZwBRQ",
+                "incontext": "https://hyp.is/twmPAJu8EeyssYfP9ZwBRQ/gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                "json": "https://hypothes.is/api/annotations/twmPAJu8EeyssYfP9ZwBRQ"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "uHI9nJu8Eeytplf6NpLEPA",
+            "created": "2022-03-04T13:12:19.186353+00:00",
+            "updated": "2022-03-04T13:12:19.186353+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 0,
+                            "startOffset": 0,
+                            "endContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[2]",
+                            "startContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[1]/code[1]"
+                        },
+                        {
+                            "end": 11113,
+                            "type": "TextPositionSelector",
+                            "start": 11068
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "CTRL + A — Move to the beginning of the line\n",
+                            "prefix": "\n      \n    Shortcut — Action\n\n ",
+                            "suffix": " CTRL + E — Move to the end of t"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Shortcuts to Improve Your Bash & Zsh Productivity"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/uHI9nJu8Eeytplf6NpLEPA",
+                "incontext": "https://hyp.is/uHI9nJu8Eeytplf6NpLEPA/gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                "json": "https://hypothes.is/api/annotations/uHI9nJu8Eeytplf6NpLEPA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "CDT1fJu9EeyU_zvDeErAXQ",
+            "created": "2022-03-04T13:14:32.976812+00:00",
+            "updated": "2022-03-04T13:14:32.976812+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 35,
+                            "startOffset": 0,
+                            "endContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[12]",
+                            "startContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[12]/code[1]"
+                        },
+                        {
+                            "end": 11770,
+                            "type": "TextPositionSelector",
+                            "start": 11736
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "CTRL + G — Escape from search mode",
+                            "prefix": "sor\n CTRL + R — Search history\n ",
+                            "suffix": "\n CTRL + - — Undo the last chang"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Shortcuts to Improve Your Bash & Zsh Productivity"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/CDT1fJu9EeyU_zvDeErAXQ",
+                "incontext": "https://hyp.is/CDT1fJu9EeyU_zvDeErAXQ/gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                "json": "https://hypothes.is/api/annotations/CDT1fJu9EeyU_zvDeErAXQ"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "GQ707Ju9EeydojdsA9HRWw",
+            "created": "2022-03-04T13:15:01.246151+00:00",
+            "updated": "2022-03-04T13:15:01.246151+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 50,
+                            "startOffset": 0,
+                            "endContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[9]",
+                            "startContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[9]/code[1]"
+                        },
+                        {
+                            "end": 11663,
+                            "type": "TextPositionSelector",
+                            "start": 11614
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "CTRL + W — Delete the word in front of the cursor",
+                            "prefix": "he word in front of the cursor\n ",
+                            "suffix": "\n ALT + D — Delete the word afte"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Shortcuts to Improve Your Bash & Zsh Productivity"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/GQ707Ju9EeydojdsA9HRWw",
+                "incontext": "https://hyp.is/GQ707Ju9EeydojdsA9HRWw/gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                "json": "https://hypothes.is/api/annotations/GQ707Ju9EeydojdsA9HRWw"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "LvfAzJu9EeyOH6_WLI1SpA",
+            "created": "2022-03-04T13:15:38.030117+00:00",
+            "updated": "2022-03-04T13:15:38.030117+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 0,
+                            "startOffset": 0,
+                            "endContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[15]",
+                            "startContainer": "/div[6]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/article[1]/ul[1]/li[14]/code[1]"
+                        },
+                        {
+                            "end": 11829,
+                            "type": "TextPositionSelector",
+                            "start": 11805
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "CTRL + L — Clear screen\n",
+                            "prefix": "TRL + - — Undo the last change\n ",
+                            "suffix": " CTRL + S — Stop output to scree"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "Shortcuts to Improve Your Bash & Zsh Productivity"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/LvfAzJu9EeyOH6_WLI1SpA",
+                "incontext": "https://hyp.is/LvfAzJu9EeyOH6_WLI1SpA/gist.github.com/acamino/2bc8df5e2ed0f99ddbe7a6fddb7773a6",
+                "json": "https://hypothes.is/api/annotations/LvfAzJu9EeyOH6_WLI1SpA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "jXOL3JxXEeya3ZMfNO-JPg",
+            "created": "2022-03-05T07:40:39.070796+00:00",
+            "updated": "2022-03-05T07:40:39.070796+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://www.kernel.org/doc/html/latest/translations/zh_CN/kernel-hacking/hacking.html",
+            "text": "# linux 内核",
+            "tags": [
+                "linux"
+            ],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://www.kernel.org/doc/html/latest/translations/zh_CN/kernel-hacking/hacking.html"
+                }
+            ],
+            "document": {
+                "title": [
+                    "内核骇客指北 — The Linux Kernel documentation"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/jXOL3JxXEeya3ZMfNO-JPg",
+                "incontext": "https://hyp.is/jXOL3JxXEeya3ZMfNO-JPg/www.kernel.org/doc/html/latest/translations/zh_CN/kernel-hacking/hacking.html",
+                "json": "https://hypothes.is/api/annotations/jXOL3JxXEeya3ZMfNO-JPg"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "l1H1lp1KEeyyPlt5qdgoiw",
+            "created": "2022-03-06T12:40:23.270723+00:00",
+            "updated": "2022-03-06T12:40:23.270723+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://kubernetes.io/zh/docs/concepts/workloads/controllers/replicaset/",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://kubernetes.io/zh/docs/concepts/workloads/controllers/replicaset/",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 102,
+                            "startOffset": 0,
+                            "endContainer": "/div[1]/div[1]/div[1]/main[1]/div[1]/p[5]",
+                            "startContainer": "/div[1]/div[1]/div[1]/main[1]/div[1]/p[5]"
+                        },
+                        {
+                            "end": 9587,
+                            "type": "TextPositionSelector",
+                            "start": 9485
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "ReplicaSet 确保任何时间都有指定数量的 Pod 副本在运行。\n然而，Deployment 是一个更高级的概念，它管理 ReplicaSet，并向 Pod\n提供声明式的更新以及许多其他有用的功能。",
+                            "prefix": "ReplicaSet 获得。\n何时使用 ReplicaSet \n",
+                            "suffix": "\n因此，我们建议使用 Deployment 而不是直接使用 Re"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "ReplicaSet"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/l1H1lp1KEeyyPlt5qdgoiw",
+                "incontext": "https://hyp.is/l1H1lp1KEeyyPlt5qdgoiw/kubernetes.io/zh/docs/concepts/workloads/controllers/replicaset/",
+                "json": "https://hypothes.is/api/annotations/l1H1lp1KEeyyPlt5qdgoiw"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        },
+        {
+            "id": "morhAJ1KEeysf8fvwIRYoA",
+            "created": "2022-03-06T12:40:28.687083+00:00",
+            "updated": "2022-03-06T12:40:28.687083+00:00",
+            "user": "acct:liuzhengyuan@hypothes.is",
+            "uri": "https://kubernetes.io/zh/docs/concepts/workloads/controllers/replicaset/",
+            "text": "",
+            "tags": [],
+            "group": "__world__",
+            "permissions": {
+                "read": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "admin": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "update": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ],
+                "delete": [
+                    "acct:liuzhengyuan@hypothes.is"
+                ]
+            },
+            "target": [
+                {
+                    "source": "https://kubernetes.io/zh/docs/concepts/workloads/controllers/replicaset/",
+                    "selector": [
+                        {
+                            "type": "RangeSelector",
+                            "endOffset": 167,
+                            "startOffset": 106,
+                            "endContainer": "/div[1]/div[1]/div[1]/main[1]/div[1]/p[5]",
+                            "startContainer": "/div[1]/div[1]/div[1]/main[1]/div[1]/p[5]"
+                        },
+                        {
+                            "end": 9652,
+                            "type": "TextPositionSelector",
+                            "start": 9591
+                        },
+                        {
+                            "type": "TextQuoteSelector",
+                            "exact": "我们建议使用 Deployment 而不是直接使用 ReplicaSet，除非\n你需要自定义更新业务流程或根本不需要更新。",
+                            "prefix": "，并向 Pod\n提供声明式的更新以及许多其他有用的功能。\n因此，",
+                            "suffix": "\n这实际上意味着，你可能永远不需要操作 ReplicaSet 对"
+                        }
+                    ]
+                }
+            ],
+            "document": {
+                "title": [
+                    "ReplicaSet"
+                ]
+            },
+            "links": {
+                "html": "https://hypothes.is/a/morhAJ1KEeysf8fvwIRYoA",
+                "incontext": "https://hyp.is/morhAJ1KEeysf8fvwIRYoA/kubernetes.io/zh/docs/concepts/workloads/controllers/replicaset/",
+                "json": "https://hypothes.is/api/annotations/morhAJ1KEeysf8fvwIRYoA"
+            },
+            "user_info": {
+                "display_name": null
+            },
+            "flagged": false,
+            "hidden": false
+        }
+    ]
+}
