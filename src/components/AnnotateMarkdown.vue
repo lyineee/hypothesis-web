@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="note-container">
     <div class="note" v-if="!edit" v-html="markdownContent" />
     <textarea v-model="syncText" class="note-edit" v-if="edit"></textarea>
   </div>
@@ -28,6 +28,9 @@ export default class AnnotateMarkdown extends Vue {
 </script>
 
 <style lang="scss">
+.note-container{
+  margin:.5em 0 0;
+}
 .note {
   text-align: start;
   border: solid 2px hsl(0, 0%, 100%);

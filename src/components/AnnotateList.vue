@@ -8,29 +8,31 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { mixins } from "vue-class-component";
 import AnnotatePage from "./AnnotatePage.vue";
-import rawData from "../assets/data.json";
+import HypoServiceMixin from "./HypoServiceMixin";
 
 @Component({
   components: {
     AnnotatePage,
   },
 })
-export default class AnnotateList extends Vue {
-  @Prop() private msg!: string;
+export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   data: Array<Array<any>> = [];
   created() {
     let prevUri = "";
-    let pageList = [];
-    for (let anno of rawData.rows) {
-      if (anno.uri != prevUri) {
-        pageList.length != 0 ? this.data.push(pageList) : "";
-        pageList = [];
-        prevUri = anno.uri;
+    this.getList("acct:liuzhengyuan@hypothes.is", 0, 20).then((rawData) => {
+      let pageList = [];
+      for (let anno of rawData.rows) {
+        if (anno.uri != prevUri) {
+          pageList.length != 0 ? this.data.push(pageList) : "";
+          pageList = [];
+          prevUri = anno.uri;
+        }
+        pageList.push(anno);
       }
-      pageList.push(anno);
-    }
-    pageList.length != 0 ? this.data.push(pageList) : "";
+      pageList.length != 0 ? this.data.push(pageList) : "";
+    });
   }
 }
 </script>
