@@ -3,6 +3,7 @@
     <div class="page-item" v-for="(page, index) in data" :key="index">
       <AnnotatePage :data="page" />
     </div>
+    <Pagenation :total="15" @pageUpdate="pageUpdate($event)" />
   </div>
 </template>
 
@@ -11,17 +12,25 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import AnnotatePage from "./AnnotatePage.vue";
 import HypoServiceMixin from "./HypoServiceMixin";
+import Pagenation from "./Pagination.vue";
 
 @Component({
   components: {
     AnnotatePage,
+    Pagenation,
   },
 })
 export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   data: Array<Array<any>> = [];
-  created() {
-    let prevUri = "";
-    this.getList("acct:liuzhengyuan@hypothes.is", 0, 20).then((rawData) => {
+  pageSize = 10;
+  pageUpdate(page: number) {
+    this.data = [];
+    this.getList(
+      "acct:liuzhengyuan@hypothes.is",
+      (page - 1) * this.pageSize,
+      this.pageSize
+    ).then((rawData) => {
+      let prevUri = "";
       let pageList = [];
       for (let anno of rawData.rows) {
         if (anno.uri != prevUri) {
@@ -33,6 +42,21 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
       }
       pageList.length != 0 ? this.data.push(pageList) : "";
     });
+  }
+  created() {
+    // this.getList("acct:liuzhengyuan@hypothes.is", 0, 20).then((rawData) => {
+    //   let prevUri = "";
+    //   let pageList = [];
+    //   for (let anno of rawData.rows) {
+    //     if (anno.uri != prevUri) {
+    //       pageList.length != 0 ? this.data.push(pageList) : "";
+    //       pageList = [];
+    //       prevUri = anno.uri;
+    //     }
+    //     pageList.push(anno);
+    //   }
+    //   pageList.length != 0 ? this.data.push(pageList) : "";
+    // });
   }
 }
 </script>
