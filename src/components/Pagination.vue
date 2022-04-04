@@ -83,7 +83,16 @@ export default class AnnotateTags extends Vue {
   }
   @Emit("pageUpdate")
   pageUpdate(page: number) {
-    const search = window.location.search.replace(/page=\d+/, `page=${page}`);
+    let search = window.location.search;
+    if (!window.location.search.match(/page=\d+/)) {
+      if (window.location.search) {
+        search += `&page=${page}`;
+      } else {
+        search += `?page=${page}`;
+      }
+    } else {
+      search = search.replace(/page=\d+/, `page=${page}`);
+    }
     window.history.pushState(
       { page: this.page },
       "",
