@@ -37,10 +37,15 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
     this.getProfile(this.auth).then((profile) => {
       if (profile.userid == this.user) {
         window.localStorage.setItem("authKey", this.auth);
+        window.localStorage.setItem("user", this.user);
         if (this.redirectTo == "") {
-          window.location.pathname = "/";
+          window.location.pathname = window.location.pathname.replace(
+            /\/login/,
+            ""
+          );
+        } else {
+          window.location.href = this.redirectTo;
         }
-        window.location.href = this.redirectTo;
       }
     });
   }

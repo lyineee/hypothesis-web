@@ -27,7 +27,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   pageUpdate(page: number) {
     this.data = [];
     this.getList(
-      "acct:liuzhengyuan@hypothes.is",
+      this.getUser(),
       (page - 1) * this.pageSize,
       this.pageSize
     ).then((rawData) => {

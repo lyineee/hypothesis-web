@@ -69,6 +69,13 @@ export default class HypoServiceMixin extends Vue {
             location.href = `${location.origin + (location.pathname == "/" ? "" : location.pathname)}/login?redirectTo=${encodeURIComponent(location.href)}`
         }
     }
+    getUser(): string {
+        const user = window.localStorage.getItem("user")
+        if (user) {
+            return user
+        }
+        return ""
+    }
 }
 
 
