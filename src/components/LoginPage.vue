@@ -54,6 +54,10 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
     if (match) {
       this.redirectTo = decodeURIComponent(match[1]);
     }
+    const currentToken = localStorage.getItem("authKey");
+    const currentUser = localStorage.getItem("user");
+    this.auth = currentToken ? currentToken : "";
+    this.user = currentUser ? currentUser : "";
   }
 }
 </script>
