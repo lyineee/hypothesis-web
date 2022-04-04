@@ -5,14 +5,17 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
+    paths-ignore:
+      - 'deployment/*'
   pull_request:
-    branches: [ master ]
+    branches: [master]
+    paths-ignore:
+      - 'deployment/*'
   workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     env:
       VUE_APP_RUN_ID: ${{ github.run_id }}
@@ -23,25 +26,22 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: yarn install
-    - run: yarn build
-    - name: tar dist
-      run: tar -czvf dist.tar.gz dist/
-    - name: head commit hash use to make a release and message
-      run: |
-        echo '${{ github.event.head_commit.id }}' | cut -c-7 | xargs echo "commit_hash:"
-        echo "GITHUB_SHA_SHORT=$( echo '${{ github.event.head_commit.id }}' | cut -c-7 )" >> $GITHUB_ENV 
-    - name: make a relase with commit hash
-      uses: softprops/action-gh-release@v1
-      with:
-        files: dist.tar.gz
-        tag_name: ${{ env.GITHUB_SHA_SHORT }}
-      
-      
-      
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - run: yarn install
+      - run: yarn build
+      - name: tar dist
+        run: tar -czvf dist.tar.gz dist/
+      - name: head commit hash use to make a release and message
+        run: |
+          echo '${{ github.event.head_commit.id }}' | cut -c-7 | xargs echo "commit_hash:"
+          echo "GITHUB_SHA_SHORT=$( echo '${{ github.event.head_commit.id }}' | cut -c-7 )" >> $GITHUB_ENV
+      - name: make a relase with commit hash
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist.tar.gz
+          tag_name: ${{ env.GITHUB_SHA_SHORT }}
