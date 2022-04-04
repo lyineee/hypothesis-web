@@ -114,7 +114,7 @@ export default class AnnotateTags extends Vue {
     } else {
       this.page = 1;
     }
-    // this.maxPage = this.isMobile ? 2 : 4;
+    this.maxPage = window.matchMedia("(max-width: 400px)").matches ? 2 : 4;
     window
       .matchMedia("(max-width: 400px)")
       .addEventListener("change", this.onMediaChange);
