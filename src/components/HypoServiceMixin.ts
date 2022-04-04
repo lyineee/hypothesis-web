@@ -32,7 +32,7 @@ export default class HypoServiceMixin extends Vue {
         return this.do("GET", `${this.api}/profile`, undefined, token)
             .then(resp => {
                 if (!resp.ok) {
-                    console.log(resp.statusText);
+                    console.error(resp.statusText);
                 }
                 return resp.json()
             })

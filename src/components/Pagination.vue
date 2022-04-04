@@ -99,6 +99,9 @@ export default class AnnotateTags extends Vue {
       location.pathname + search
     );
   }
+  onMediaChange(mql: MediaQueryListEvent) {
+    this.maxPage = mql.matches ? 2 : 4;
+  }
   created() {
     const capGroup = window.location.search.match(/page=(\d+)/);
     if (capGroup && capGroup.length == 2) {
@@ -111,6 +114,10 @@ export default class AnnotateTags extends Vue {
     } else {
       this.page = 1;
     }
+    // this.maxPage = this.isMobile ? 2 : 4;
+    window
+      .matchMedia("(max-width: 400px)")
+      .addEventListener("change", this.onMediaChange);
   }
 }
 </script>

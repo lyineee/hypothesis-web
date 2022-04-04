@@ -71,6 +71,9 @@ export default class AnnotatePage extends Vue {
   margin-top: -1em;
   margin-bottom: 0.7em;
   font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: hsl(0, 0%, 52%);
   .link {
     cursor: pointer;

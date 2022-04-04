@@ -54,6 +54,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   border: solid 1px hsla(0, 0%, 61%, 0.234);
   margin-left: 10%;
   margin-right: 30%;
+  padding: 2em;
   @media print {
     margin: 0px;
     border: none;
@@ -61,8 +62,8 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   @media screen and (max-width: 900px) {
     margin-left: 2%;
     margin-right: 2%;
+    padding: .7em;
   }
-  padding: 2em;
   .page-item {
     padding-bottom: 0.5em;
     position: relative;
