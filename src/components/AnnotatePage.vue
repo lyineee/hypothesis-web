@@ -34,6 +34,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Annotate from "./Annotate.vue";
+import { Annotation } from "./HypoServiceMixin";
 
 @Component({
   components: {
@@ -41,7 +42,7 @@ import Annotate from "./Annotate.vue";
   },
 })
 export default class AnnotatePage extends Vue {
-  @Prop() private data!: any;
+  @Prop() private data!: Array<Annotation>;
   openPage() {
     window.open(this.data[0].uri, "_blank");
   }
@@ -68,7 +69,7 @@ export default class AnnotatePage extends Vue {
 .anno-link {
   text-align: start;
   margin-top: -1em;
-  margin-bottom: .7em;
+  margin-bottom: 0.7em;
   font-size: 0.9em;
   color: hsl(0, 0%, 52%);
   .link {

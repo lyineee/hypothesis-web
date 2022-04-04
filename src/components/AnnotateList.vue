@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import AnnotatePage from "./AnnotatePage.vue";
-import HypoServiceMixin from "./HypoServiceMixin";
+import HypoServiceMixin, { Annotation } from "./HypoServiceMixin";
 import Pagenation from "./Pagination.vue";
 
 @Component({
@@ -21,7 +21,7 @@ import Pagenation from "./Pagination.vue";
   },
 })
 export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
-  data: Array<Array<any>> = [];
+  data: Array<Array<Annotation>> = [];
   pageSize = 15;
   totalPage = 1;
   pageUpdate(page: number) {

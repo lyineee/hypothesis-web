@@ -10,7 +10,7 @@ import { Component, Prop, PropSync, Vue, Watch } from "vue-property-decorator";
 import { marked } from "marked";
 
 @Component
-export default class AnnotateMarkdown extends Vue {
+export default class AnnotateMarkdown extends Vue { //TODO syntax highlighting
   @PropSync("text") private syncText!: string;
   @Prop({ default: false }) private edit!: boolean;
   @Watch("edit")

@@ -42,6 +42,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import AnnotateMarkdown from "./AnnotateMarkdown.vue";
 import AnnotateTags from "./AnnotateTags.vue";
 import HypoServiceMixin from "./HypoServiceMixin";
+import { Annotation } from "./HypoServiceMixin";
 
 @Component({
   components: {
@@ -50,7 +51,7 @@ import HypoServiceMixin from "./HypoServiceMixin";
   },
 })
 export default class Annotate extends mixins(Vue, HypoServiceMixin) {
-  @Prop() private data: any;
+  @Prop() private data!: Annotation;
   edit = false;
   annoText = "";
   tags: Array<string> = [];
@@ -92,10 +93,7 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
   }
   created() {
     if (this.data.target[0].selector) {
-      this.annoText =
-        this.data.target[0].selector[
-          this.data.target[0].selector.length - 1
-        ].exact;
+      this.annoText = this.data.target[0].selector[2].exact;
     }
     this.tags = Array.from(this.data.tags);
     this.note = this.data.text;
