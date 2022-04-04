@@ -3,7 +3,7 @@ name: Push and deployimage
 on:
   push:
     tags:
-      - "hypothesis-web-k8s-sidecar/v*"
+      - "deployment/v*"
 
 jobs:
   push:
