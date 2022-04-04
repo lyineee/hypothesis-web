@@ -28,7 +28,7 @@ spec:
           volumeMounts:
             - name: static-file-vol
               mountPath: /usr/share/nginx/html
-              
+
       volumes:
         - name: config-vol
           configMap:
@@ -52,6 +52,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hypothesis-web-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirectscheme-https@kubernetescrd
 spec:
   rules:
     - host: hypothesis.lyine.pw
@@ -64,3 +66,14 @@ spec:
                 name: hypothesis-web
                 port:
                   number: 80
+
+---
+# Redirect to https
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirectscheme-https
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
