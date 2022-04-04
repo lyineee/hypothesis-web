@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hypothesis-web
+  labels:
+    app: hypothesis-web
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hypothesis-web
+  template:
+    metadata:
+      labels:
+        app: hypothesis-web
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          volumeMounts:
+            - name: config-vol
+              mountPath: /etc/nginx/conf.d
+            - name: static-file-vol
+              mountPath: /usr/share/nginx/html
+        - name: static-file-sidecar
+          image: lyine/hypothesis-web-k8s-sidecar:0.0.6
+          volumeMounts:
+            - name: static-file-vol
+              mountPath: /usr/share/nginx/html
+              
+      volumes:
+        - name: config-vol
+          configMap:
+            name: hypothesis-web-nginx-cm
+        - name: static-file-vol
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hypothesis-web
+spec:
+  selector:
+    app: hypothesis-web
+  ports:
+    - port: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hypothesis-web-ingress
+spec:
+  rules:
+    - host: hypothesis.lyine.pw
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hypothesis-web
+                port:
+                  number: 80
