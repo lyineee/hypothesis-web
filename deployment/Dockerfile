@@ -1,7 +1,7 @@
 FROM golang:1.18 as builder
 
 WORKDIR /go/src/app
-COPY ["go.work", "main.go", "."]
+COPY ["go.work", "main.go", "./"]
 
 RUN echo "=> start get dependent" \
     && go work sync

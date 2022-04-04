@@ -24,7 +24,8 @@ var (
 	extractPath = "/usr/share/nginx/html"
 	dlFilename  = "dist.tar.gz"
 	ghproxy     = "https://ghproxy.com/"
-	githubUrl   = "https://api.github.com/repos/lyineee/hypothesis-web"
+	githubAPI   = "https://api.github.com/repos/"
+	repo        = "lyineee/hypothesis-web"
 )
 
 func main() {
@@ -35,7 +36,7 @@ func mainLoop() {
 	for {
 		time.Sleep(time.Duration(delayTime) * time.Second)
 		retry := 5
-		req, err := http.NewRequest("GET", fmt.Sprintf("%s/releases/latest", githubUrl), nil)
+		req, err := http.NewRequest("GET", fmt.Sprintf("%s%s/releases/latest", githubAPI, repo), nil)
 		if err != nil {
 			log.Println("new request error: ", err)
 			continue
@@ -81,7 +82,7 @@ func mainLoop() {
 		// }
 		for re := retry; re > 0; re-- {
 			time.Sleep(time.Duration(delayTime) * time.Second)
-			req, err := http.NewRequest("GET", fmt.Sprintf("%s/releases/latest", githubUrl), nil)
+			req, err := http.NewRequest("GET", fmt.Sprintf("%s%s/releases/latest", githubAPI, repo), nil)
 			if err != nil {
 				log.Println("new content request error: ", err)
 				continue
@@ -97,7 +98,9 @@ func mainLoop() {
 				log.Println("json recode error: ", err)
 			}
 			log.Println("release: ", release.TagName)
-			err = downloadAndExtract(extractPath, fmt.Sprintf("%s%s/releases/download/%s/%s", ghproxy, githubUrl, release.TagName, dlFilename))
+			dlUrl := fmt.Sprintf("%shttps://github.com/%s/releases/download/%s/%s", ghproxy, repo, release.TagName, dlFilename)
+			log.Printf("download from: %s", dlUrl)
+			err = downloadAndExtract(extractPath, dlUrl)
 			if err != nil {
 				log.Println("download and extract file err: ", err)
 				continue
