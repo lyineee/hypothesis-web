@@ -38,7 +38,9 @@ export default class AnnotateTags extends Vue {
     this.syncTags.splice(this.syncTags.indexOf(tag), 1);
   }
   pushTag(val: string) {
-    this.syncTags.push(val);
+    if (val != "") {
+      this.syncTags.push(val);
+    }
     this.newTag = "";
   }
 }
@@ -56,8 +58,8 @@ export default class AnnotateTags extends Vue {
     margin: 0 0.3em;
     padding: 0.2em 0.5em;
     display: flex;
-    @media print{
-      border: solid .3px hsl(0,0%,70%);
+    @media print {
+      border: solid 0.3px hsl(0, 0%, 70%);
     }
     .delete-span {
       padding-left: 0.3em;
