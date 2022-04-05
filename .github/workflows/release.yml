@@ -38,10 +38,11 @@ jobs:
         run: tar -czvf dist.tar.gz dist/
       - name: head commit hash use to make a release and message
         run: |
-          echo '${{ github.event.head_commit.id }}' | cut -c-7 | xargs echo "commit_hash:"
-          echo "GITHUB_SHA_SHORT=$( echo '${{ github.event.head_commit.id }}' | cut -c-7 )" >> $GITHUB_ENV
+          GITHUB_SHA_SHORT=$( echo '${{ github.event.head_commit.id }}' | cut -c-7 )
+          echo "commit_hash:" $GITHUB_SHA_SHORT
           RELEASE_TAG=$(date '+%Y%m%d%H%M%S')-$GITHUB_SHA_SHORT
           echo release tag: $RELEASE_TAG
+          echo "GITHUB_SHA_SHORT=$GITHUB_SHA_SHORT" >> $GITHUB_ENV
           echo "RELEASE_TAG=$RELEASE_TAG" >> $GITHUB_ENV
       - name: make a relase with commit hash
         uses: softprops/action-gh-release@v1
