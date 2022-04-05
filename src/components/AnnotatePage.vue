@@ -8,7 +8,7 @@
       <span class="anno-count">{{ data.length }}</span>
     </div>
     <div class="anno-link">
-      <span class="link" v-on:click="openPage()">{{ data[0].uri }}</span>
+      <a class="link" :href="data[0].uri" target="_blank">{{ data[0].uri }}</a>
       <span class="link-svg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,9 +43,6 @@ import { Annotation } from "./HypoServiceMixin";
 })
 export default class AnnotatePage extends Vue {
   @Prop() private data!: Array<Annotation>;
-  openPage() {
-    window.open(this.data[0].uri, "_blank");
-  }
 }
 </script>
 
@@ -76,17 +73,18 @@ export default class AnnotatePage extends Vue {
   text-overflow: ellipsis;
   color: hsl(0, 0%, 52%);
   .link {
-    cursor: pointer;
+    color: hsl(0deg, 0%, 52%);
+    text-decoration: none;
+  }
+  .link-svg {
+    opacity: 0;
+    margin-left: 0.2em;
   }
   &:hover {
     text-decoration: underline;
     .link-svg {
       opacity: 1;
     }
-  }
-  .link-svg {
-    opacity: 0;
-    margin-left: 0.2em;
   }
 }
 </style>
