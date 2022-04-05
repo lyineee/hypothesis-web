@@ -8,11 +8,27 @@
 <script lang="ts">
 import { Component, Prop, PropSync, Vue, Watch } from "vue-property-decorator";
 import { marked } from "marked";
+import hljs from "highlight.js";
 
 @Component
-export default class AnnotateMarkdown extends Vue { //TODO syntax highlighting
+export default class AnnotateMarkdown extends Vue {
+  //TODO syntax highlighting
   @PropSync("text") private syncText!: string;
   @Prop({ default: false }) private edit!: boolean;
+  markedOption: marked.MarkedOptions = {
+    renderer: new marked.Renderer(),
+    highlight: function (code: string, lang: string) {
+      console.log("input: ", lang);
+      const language = hljs.getLanguage(lang)?.name;
+      console.log("result: ", language);
+      if (!language) {
+        console.log("use auto detect");
+        return hljs.highlightAuto(code).value;
+      } else {
+        return hljs.highlight(code, { language }).value;
+      }
+    },
+  };
   @Watch("edit")
   onEditChange(val: boolean) {
     this.edit = val;
@@ -22,14 +38,16 @@ export default class AnnotateMarkdown extends Vue { //TODO syntax highlighting
   }
   markdownContent?: string;
   created() {
+    marked.setOptions(this.markedOption);
     this.markdownContent = marked.parse(this.syncText);
   }
 }
 </script>
 
 <style lang="scss">
-.note-container{
-  margin:.5em 0 0;
+@import "highlight.js/scss/github";
+.note-container {
+  margin: 0.5em 0 0;
 }
 .note {
   text-align: start;
@@ -52,9 +70,23 @@ export default class AnnotateMarkdown extends Vue { //TODO syntax highlighting
   img {
     width: 70%;
   }
+  code {
+    font-family: "Sans Mono", "Consolas", "Courier", monospace;
+  }
+  :not(pre) code {
+    border-radius: 0.2em;
+    // font-style: italic;
+    font-size: 1em;
+    padding: 0em 0.4em;
+    background-color: hsl(0, 0%, 93%);
+    color: hsl(0, 90%, 68%);
+  }
   pre {
     overflow: auto;
-    @media print{
+    & > code {
+      font-size: 0.8em;
+    }
+    @media print {
       overflow: hidden;
       white-space: normal;
     }
