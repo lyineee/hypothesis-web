@@ -33,7 +33,9 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
   auth = "";
   redirectTo = "";
   validate() {
-    console.log(this.user, this.auth);
+    if (!/acct:[^A-Z0-9._]{3,30}@.*$/.test(this.user)) {
+      this.user = `acct:${this.user}@hypothes.is`;
+    }
     this.getProfile(this.auth).then((profile) => {
       if (profile.userid == this.user) {
         window.localStorage.setItem("authKey", this.auth);
