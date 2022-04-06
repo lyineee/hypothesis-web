@@ -75,7 +75,6 @@ export default class AnnotateMarkdown extends Vue {
   }
   :not(pre) code {
     border-radius: 0.2em;
-    // font-style: italic;
     font-size: 1em;
     padding: 0em 0.4em;
     background-color: hsl(0, 0%, 93%);
@@ -83,6 +82,9 @@ export default class AnnotateMarkdown extends Vue {
   }
   pre {
     overflow: auto;
+    background-color: hsl(0, 0%, 95%);
+    padding: 0.4em;
+    border-radius: 0.2em;
     & > code {
       font-size: 0.8em;
     }
