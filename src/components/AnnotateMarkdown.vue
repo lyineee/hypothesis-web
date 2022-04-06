@@ -95,8 +95,19 @@ export default class AnnotateMarkdown extends Vue {
   }
 }
 .note-edit {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   max-width: 100%;
   min-width: 100%;
-  height: 10em;
+  font-size: 1em;
+  height: 13em;
+  border: 1px solid #dbdbdb;
+  transition: box-shadow 0.1s;
+  box-sizing: border-box;
+  padding: .5em;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #59a7e8;
+    background-color: white;
+  }
 }
 </style>
