@@ -3,7 +3,7 @@
     <li>
       <a
         class="page-btn btn-prev"
-        :class="pageList[0] == 1 ? 'disable' : ''"
+        :class="page == 1 ? 'disable' : ''"
         @click.prevent="pageList[0] == 1 ? '' : (page = pageNumber - 1)"
       >
         <svg
