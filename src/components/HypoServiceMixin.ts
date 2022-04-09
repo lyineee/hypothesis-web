@@ -19,7 +19,6 @@ export default class HypoServiceMixin extends Vue {
     }
 
     searchHypothesis(search: string, token?: string): Promise<searchResponseJson> {
-        console.debug("search string", search)
         return this.do("GET", `${this.api}/search?${search}`, undefined, token)
             .then(resp => {
                 if (!resp.ok) {

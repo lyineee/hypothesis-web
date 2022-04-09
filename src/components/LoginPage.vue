@@ -16,6 +16,7 @@
         </div>
       </div>
       <div class="btn-container">
+        <button class="btn-cancel" @click="cancel">取消</button>
         <button @click="validate">保存</button>
       </div>
     </div>
@@ -51,6 +52,16 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
       }
     });
   }
+  cancel() {
+    if (this.redirectTo == "") {
+      window.location.pathname = window.location.pathname.replace(
+        /\/login/,
+        ""
+      );
+    } else {
+      window.location.href = this.redirectTo;
+    }
+  }
   created() {
     const match = window.location.search.match(/redirectTo=(.+)$/);
     if (match) {
@@ -65,6 +76,9 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
 </script>
 
 <style  lang="scss">
+@use "scss/theme";
+$background: map-get(theme.$palette, "background");
+$on-background: map-get(theme.$palette, "on-background");
 .dialog-container {
   position: fixed;
   width: 100%;
@@ -137,6 +151,14 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
         transition: color 0.2s, background-color 0.2s;
         &:hover {
           background-color: hsl(0, 90%, 70%);
+        }
+      }
+      .btn-cancel {
+        margin-right: 1em;
+        background-color: theme.darken($background, 2);
+        color: $on-background;
+        &:hover {
+          background-color: theme.darken($background, 5);
         }
       }
     }
