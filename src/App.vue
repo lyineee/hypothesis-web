@@ -44,6 +44,7 @@ export default class App extends Vue {
 <style lang="scss">
 body {
   margin: 0;
+  overflow: scroll;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
