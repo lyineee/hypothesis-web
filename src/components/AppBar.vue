@@ -140,9 +140,10 @@ $on-background: map-get(theme.$palette, "on-background");
           svg {
             padding: 0.4em;
           }
+          .clear {
+            padding: 0.2em 1em 0.2em 0.2em;
+          }
         }
-      }
-      .setting-container {
       }
     }
   }
