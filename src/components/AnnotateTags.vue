@@ -34,7 +34,6 @@ export default class AnnotateTags extends Vue {
   @PropSync("tags") syncTags!: Array<string>;
   newTag = "";
   deleteTag(tag: string) {
-    console.log(tag);
     this.syncTags.splice(this.syncTags.indexOf(tag), 1);
   }
   pushTag(val: string) {

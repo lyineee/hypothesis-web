@@ -88,9 +88,6 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
         console.log("error occur", err);
       });
   }
-  onTagsChange(tags: Array<string>) {
-    console.log(tags);
-  }
   created() {
     if (this.data.target[0].selector) {
       this.annoText = this.data.target[0].selector[2].exact;
@@ -102,6 +99,13 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
 </script>
 
 <style scoped lang="scss">
+@use "scss/theme";
+
+$primary: map-get(theme.$palette, "primary");
+$background: map-get(theme.$palette, "background");
+$secondary: map-get(theme.$palette, "secondary");
+$on-background: map-get(theme.$palette, "on-background");
+
 .annotation-content {
   .quote-content {
     font-size: 0.9em;
@@ -110,7 +114,7 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
     padding-left: 0.4em;
     text-align: start;
     width: 70%;
-    border-left: solid 3.5px hsla(209, 0%, 64%, 0.5);
+    border-left: solid 3.5px theme.darken($background);
   }
   .btn-container {
     padding: 0.3em 0.5em 0.3em 0em;
@@ -124,11 +128,11 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
       padding: 0.3em 1em;
       font-size: 1.2em;
       border: none;
-      color: hsl(0, 0%, 0%);
-      background-color: hsl(0, 0%, 90%);
+      color: $on-background;
+      background-color: theme.darken($background, 2);
       transition: background-color 0.2s;
       &:hover {
-        background-color: hsl(0, 0%, 85%);
+        background-color: theme.darken($background, 5);
         cursor: pointer;
       }
       svg {
@@ -145,7 +149,7 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
       top: -0.3em;
       height: 1.3em;
       background-color: inherit;
-      color: hsl(0, 0%, 70%);
+      color: $primary;
       padding: 0;
       @media (hover: hover) {
         opacity: 0; // hide edit icon when device can hover
@@ -153,20 +157,26 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
       &:hover {
         background-color: inherit;
         svg {
-          fill: hsl(0, 0%, 40%);
+          fill: theme.darken($background, 8);
         }
       }
       svg {
         margin-right: 0;
         height: 100%;
-        fill: hsl(0, 0%, 70%);
+        fill: theme.darken($background, 5);
       }
     }
     .save-btn {
-      background-color: hsl(0, 0%, 40%);
-      color: hsl(0, 0%, 95%);
+      background-color: theme.darken(
+        map-get(theme.$palette, "primary-variant"),
+        10
+      );
+      color: map-get(theme.$palette, "on-dark");
       &:hover {
-        background-color: hsl(0, 0%, 20%);
+        background-color: theme.darken(
+          map-get(theme.$palette, "primary-variant"),
+          15
+        );
       }
     }
   }
@@ -177,7 +187,7 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
       }
     }
     .quote-content {
-      border-left: solid 3.5px hsl(204, 100%, 80%); // hight light quote content when hover
+      border-left: solid 3.5px $primary; // hight light quote content when hover
     }
   }
 }

@@ -7,10 +7,15 @@ export default class HypoServiceMixin extends Vue {
     api = "https://api.hypothes.is/api"
 
     getList(user: string, offset: number, limit: number): Promise<searchResponseJson> {
-        const userSeach = `user=${user}`
+        return this.searchAnno(offset, limit, user, this.getToken())
+    }
+
+    searchAnno(offset: number, limit: number, user?: string, token?: string, any?: string, tags?: Array<string>, quote?: string, text?: string, url?: string) {
+        const userSeach = `${user ? "&user=" + user : ""}`
         const pagination = `offset=${offset}&limit=${limit}`
-        const search = `${userSeach}&${pagination}`
-        return this.searchHypothesis(search, this.getToken())
+        const searchPart = `${any ? "&any=" + any : ""}${tags ? "&tags=" + tags : ""}${quote ? "&quote=" + quote : ""}${text ? "&text=" + text : ""}${url ? "&url=" + url : ""}`
+        const search = `${pagination}${userSeach}${searchPart}`
+        return this.searchHypothesis(search, token)
     }
 
     searchHypothesis(search: string, token?: string): Promise<searchResponseJson> {

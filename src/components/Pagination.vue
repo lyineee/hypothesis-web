@@ -61,6 +61,7 @@ import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 export default class AnnotateTags extends Vue {
   maxPage = 4;
   @Prop({ type: Number }) private total!: number;
+  @Prop() pageNumber!: number; //if not assign an initail value, pageNumber will be immutable. I can not figure out why.
   get pageList() {
     let start = this.page > this.maxPage ? this.page - this.maxPage : 1;
     if (start > this.total) {
@@ -72,9 +73,7 @@ export default class AnnotateTags extends Vue {
         : this.maxPage * 2;
     return [...Array(count).keys()].map((v) => v + start);
   }
-  pageNumber = 1; //if not assign an initail value, pageNumber will be immutable. I can not figure out why.
   set page(val: number) {
-    this.pageNumber = val;
     this.pageUpdate(val);
   }
   get page() {
@@ -83,37 +82,13 @@ export default class AnnotateTags extends Vue {
   }
   @Emit("pageUpdate")
   pageUpdate(page: number) {
-    let search = window.location.search;
-    if (!window.location.search.match(/page=\d+/)) {
-      if (window.location.search) {
-        search += `&page=${page}`;
-      } else {
-        search += `?page=${page}`;
-      }
-    } else {
-      search = search.replace(/page=\d+/, `page=${page}`);
-    }
-    window.history.pushState(
-      { page: this.page },
-      "",
-      location.pathname + search
-    );
+    return page;
   }
   onMediaChange(mql: MediaQueryListEvent) {
     this.maxPage = mql.matches ? 2 : 4;
   }
   created() {
-    const capGroup = window.location.search.match(/page=(\d+)/);
-    if (capGroup && capGroup.length == 2) {
-      const page = Number.parseInt(capGroup[1]);
-      if (page < 1) {
-        this.page = 1;
-      } else {
-        this.page = page;
-      }
-    } else {
-      this.page = 1;
-    }
+    this.page = this.pageNumber;
     this.maxPage = window.matchMedia("(max-width: 400px)").matches ? 2 : 4;
     window
       .matchMedia("(max-width: 400px)")

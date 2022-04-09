@@ -1,0 +1,39 @@
+@use "sass:color";
+
+$step: 5%;
+
+$layout-breakpoint-small: 400px;
+$layout-breakpoint-medium: 900px;
+
+$color-palette-light: (
+    primary: hsl(204deg 100% 80%),
+    primary-variant: hsl(204deg 100% 70%),
+    secondary: hsl(0, 90%, 70%),
+    secondary-variant: hsl(0, 90%, 60%),
+    background: hsla(0, 0%, 98%),
+    on-dark: hsl(0, 0%, 95%),
+    on-primary: hsl(210deg 29% 24%),
+    on-background: hsl(210deg 29% 24%),
+);
+
+$color-palette-dark: (
+    primary: hsl(0, 0%, 20%),
+    primary-variant: hsl(0, 0%, 30%),
+    secondary: hsl(0, 90%, 60%),
+    secondary-variant: hsl(0, 90%, 70%),
+    background: hsl(0, 0%, 80%),
+    on-dark: hsl(0, 0%, 20%),
+    on-primary: hsl(0, 0%, 90%),
+    on-background: hsl(0, 0%, 90%),
+);
+
+$palette: $color-palette-light;
+// $palette: $color-palette-dark;
+
+@function darken($color, $d: 1) {
+    @return color.scale($color, $lightness: -$d * $step);
+}
+
+@function lighten($color, $d: 1) {
+    @return color.scale($color, $lightness: $d * $step);
+}

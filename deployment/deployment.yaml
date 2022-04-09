@@ -24,7 +24,8 @@ spec:
             - name: static-file-vol
               mountPath: /usr/share/nginx/html
         - name: static-file-sidecar
-          image: lyine/hypothesis-web-k8s-sidecar:0.1.0
+          image: lyine/release-sidecar:0.1.0
+          args: ["--repo", "lyineee/hypothesis-web"]
           volumeMounts:
             - name: static-file-vol
               mountPath: /usr/share/nginx/html

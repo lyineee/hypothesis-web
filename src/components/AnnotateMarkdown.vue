@@ -18,11 +18,8 @@ export default class AnnotateMarkdown extends Vue {
   markedOption: marked.MarkedOptions = {
     renderer: new marked.Renderer(),
     highlight: function (code: string, lang: string) {
-      console.log("input: ", lang);
       const language = hljs.getLanguage(lang)?.name;
-      console.log("result: ", language);
       if (!language) {
-        console.log("use auto detect");
         return hljs.highlightAuto(code).value;
       } else {
         return hljs.highlight(code, { language }).value;
