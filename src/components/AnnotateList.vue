@@ -45,7 +45,11 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
         this.pageSize,
         this.getUser(),
         this.getToken(),
-        this.search
+        this.search.replaceAll(/\w+:[^ ]*/g, "").trim(),
+        this.getSearchProperty(this.search, "tag")?.split(","),
+        this.getSearchProperty(this.search, "quote"),
+        this.getSearchProperty(this.search, "text"),
+        this.getSearchProperty(this.search, "url")
       ).then((rawData) => {
         this.totalPage = Math.ceil(rawData.total / this.pageSize);
         this.renderList(rawData.rows);
@@ -60,6 +64,13 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
       this.totalPage = Math.ceil(rawData.total / this.pageSize);
       this.renderList(rawData.rows);
     });
+  }
+
+  getSearchProperty(searchText: string, key: string): string | undefined {
+    const match = searchText.match(`${key}:([^ ]*)`);
+    if (match?.length == 2) {
+      return match[1];
+    }
   }
 
   renderList(data: Array<Annotation>) {
