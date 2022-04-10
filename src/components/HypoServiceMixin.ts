@@ -7,7 +7,7 @@ export default class HypoServiceMixin extends Vue {
     api = "https://api.hypothes.is/api"
 
     getList(user: string, offset: number, limit: number): Promise<searchResponseJson> {
-        return this.searchAnno(offset, limit, user, this.authKey?this.getToken():"")
+        return this.searchAnno(offset, limit, user, this.getToken())
     }
 
     searchAnno(offset: number, limit: number, user?: string, token?: string, any?: string, tags?: Array<string>, quote?: string, text?: string, url?: string) {
@@ -70,6 +70,9 @@ export default class HypoServiceMixin extends Vue {
             return user
         }
         return ""
+    }
+    created() {
+        this.authKey = window.localStorage.getItem("authKey") as string
     }
 }
 
