@@ -34,9 +34,18 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
   auth = "";
   redirectTo = "";
   validate() {
-    if (!/acct:[^A-Z0-9._]{3,30}@.*$/.test(this.user)) {
+    if (!/acct:[^A-Z0-9._]{3,30}@.*$/.test(this.user) && this.user) {
       this.user = `acct:${this.user}@hypothes.is`;
     }
+
+    // no token
+    if (!this.auth) {
+      window.localStorage.setItem("authKey", "");
+      window.localStorage.setItem("user", this.user);
+      this.cancel();
+    }
+
+    // token must with user
     this.getProfile(this.auth).then((profile) => {
       if (profile.userid == this.user) {
         window.localStorage.setItem("authKey", this.auth);

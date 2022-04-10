@@ -12,7 +12,7 @@
       :edit="edit"
     />
     <div class="btn-container">
-      <button class="edit-btn edit" v-if="!edit" v-on:click="enterEdit">
+      <button class="edit-btn edit" v-if="!edit && editPermit" v-on:click="enterEdit">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
@@ -56,6 +56,9 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
   annoText = "";
   tags: Array<string> = [];
   note = "";
+  get editPermit() {
+    return this.data.permissions.update[0] == this.getUser();
+  }
   enterEdit() {
     this.edit = true;
   }
