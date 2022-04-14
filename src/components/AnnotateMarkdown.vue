@@ -52,11 +52,24 @@ export default class AnnotateMarkdown extends Vue {
   background-color: hsl(0, 0%, 100%);
   padding-right: 2em;
   padding-left: 1em;
+  h1:last-child,
+  h2:last-child {
+    border-bottom: none;
+  }
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 0.1em;
+  }
   h1 {
     font-size: 2em;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid hsl(0, 0%, 90%);
   }
   h2 {
     font-size: 1.7em;
+    padding-bottom: 0.1em;
+    border-bottom: 1px solid hsl(0, 0%, 90%);
   }
   h3 {
     font-size: 1.4em;
@@ -90,6 +103,15 @@ export default class AnnotateMarkdown extends Vue {
       white-space: normal;
     }
   }
+  blockquote {
+    border-left: solid 4px hsl(204deg, 100%, 90%);
+    margin-left: 0.5em;
+    background: hsl(0, 0%, 97%);
+    padding: 0.2em 0em 0.2em 0.5em;
+    p {
+      margin: 0.4em 0px;
+    }
+  }
 }
 .note-edit {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -100,7 +122,7 @@ export default class AnnotateMarkdown extends Vue {
   border: 1px solid #dbdbdb;
   transition: box-shadow 0.1s;
   box-sizing: border-box;
-  padding: .5em;
+  padding: 0.5em;
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px #59a7e8;
