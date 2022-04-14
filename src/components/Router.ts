@@ -4,9 +4,12 @@ export default class Router {
     routes!: Array<Route>
     onRouteChange?: routeChangeFunc
 
-    goto(pathname: string) {
+    goto(pathname: string, reload?: boolean) {
         this.routeChange(pathname)
         history.pushState({}, "", pathname + location.search)
+        if (reload) {
+            location.reload()
+        }
     }
 
     routeChange(pathname: string) {

@@ -52,7 +52,7 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
       if (profile.userid == this.user) {
         window.localStorage.setItem("authKey", this.auth);
         window.localStorage.setItem("user", this.user);
-        this.router.goto("/");
+        this.router.goto("/", true);
       }
     });
   }
