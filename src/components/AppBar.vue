@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="setting-container">
-        <a href="/login">
+        <a href="/login" @click.prevent='router.goto("/login")'>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
             <path
@@ -41,12 +41,14 @@
 
 <script lang="ts">
 import { mixins } from "vue-class-component";
-import { Component, PropSync, Vue } from "vue-property-decorator";
+import { Component, InjectReactive, PropSync, Vue } from "vue-property-decorator";
 import HypoServiceMixin from "./HypoServiceMixin";
+import Router from "./Router";
 
 @Component
 export default class Annotate extends mixins(Vue, HypoServiceMixin) {
   @PropSync("text") searchText?: string;
+  @InjectReactive() router!:Router
 }
 </script>
 

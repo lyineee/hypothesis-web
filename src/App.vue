@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <component :is="currentPage"></component>
+    <keep-alive>
+      <component v-bind:is="currentPage"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -10,37 +12,45 @@ import AnnotateList from "./components/AnnotateList.vue";
 import LoginPage from "./components/LoginPage.vue";
 import AppBar from "./components/AppBar.vue";
 import UrlSearchService from "./components/UrlSearchService";
+import { VueConstructor } from "vue";
+import Router, { Route } from "./components/Router";
 
 @Component({
   components: {
-    AnnotateList,
     AppBar,
   },
 })
 export default class App extends Vue {
   showLoginPage = false;
-  currentPage!: any;
+  currentPage: VueConstructor<Vue> = AnnotateList;
   private searchKey = ["page", "search", "redirectTo"];
-  @ProvideReactive("urlSearchService") urlSearch?: UrlSearchService = undefined;
-  route = [
+  routes: Array<Route> = [
     {
+      title: "login",
       regex: /.*\/login.*/,
-      page: LoginPage,
+      component: LoginPage,
+    },
+    {
+      title: "main",
+      regex: /.*/,
+      component: AnnotateList,
     },
   ];
-  router(pathname: string) {
-    for (let r of this.route) {
-      if (pathname.match(r.regex)) {
-        this.currentPage = r.page;
-      }
-    }
-    if (!this.currentPage) {
-      this.currentPage = AnnotateList;
-    }
+
+  @ProvideReactive("urlSearchService") urlSearch?: UrlSearchService =
+    new UrlSearchService(this.searchKey);
+  @ProvideReactive() router: Router = new Router(
+    this.routes,
+    location.pathname,
+    this.updateRoute
+  );
+
+  updateRoute(r: Route) {
+    r.component && (this.currentPage = r.component);
   }
+
   created() {
-    this.router(location.pathname);
-    this.urlSearch = new UrlSearchService(this.searchKey);
+    this.router.routeChange(location.pathname);
   }
 }
 </script>

@@ -26,13 +26,15 @@
 
 <script lang="ts">
 import { mixins } from "vue-class-component";
-import { Component, Vue } from "vue-property-decorator";
+import { Component, InjectReactive, Vue } from "vue-property-decorator";
 import HypoServiceMixin from "./HypoServiceMixin";
+import Router from "./Router";
 @Component
 export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
   user = "";
   auth = "";
   redirectTo = "";
+  @InjectReactive() router!: Router;
   validate() {
     if (!/acct:[^A-Z0-9._]{3,30}@.*$/.test(this.user) && this.user) {
       this.user = `acct:${this.user}@hypothes.is`;
@@ -50,26 +52,12 @@ export default class LoginPage extends mixins(Vue, HypoServiceMixin) {
       if (profile.userid == this.user) {
         window.localStorage.setItem("authKey", this.auth);
         window.localStorage.setItem("user", this.user);
-        if (this.redirectTo == "") {
-          window.location.pathname = window.location.pathname.replace(
-            /\/login/,
-            ""
-          );
-        } else {
-          window.location.href = this.redirectTo;
-        }
+        this.router.goto("/");
       }
     });
   }
   cancel() {
-    if (this.redirectTo == "") {
-      window.location.pathname = window.location.pathname.replace(
-        /\/login/,
-        ""
-      );
-    } else {
-      window.location.href = this.redirectTo;
-    }
+    this.router.goto("/");
   }
   created() {
     const match = window.location.search.match(/redirectTo=(.+)$/);
