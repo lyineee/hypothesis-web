@@ -100,7 +100,6 @@ export default class AnnotateMarkdown extends Vue {
   border: 1px solid #dbdbdb;
   transition: box-shadow 0.1s;
   box-sizing: border-box;
-  padding: .5em;
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px #59a7e8;

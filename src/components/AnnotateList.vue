@@ -15,12 +15,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Inject, InjectReactive, Vue } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import AnnotatePage from "./AnnotatePage.vue";
 import HypoServiceMixin, { Annotation } from "./HypoServiceMixin";
 import Pagenation from "./Pagination.vue";
 import AppBar from "./AppBar.vue";
+import UrlSearchService from "./UrlSearchService";
 
 @Component({
   components: {
@@ -35,8 +36,9 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   totalPage = 1;
   search = "";
   page = 1;
+  @InjectReactive("urlSearchService") urlSearchService!: UrlSearchService;
   pageUpdate(page: number) {
-    this.updateSearch("page", page.toString());
+    // this.urlSearchService.set("page", page.toString());
     this.page = page;
     this.data = [];
     if (this.search != "") {
@@ -87,43 +89,14 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
     pageList.length != 0 ? this.data.push(pageList) : "";
   }
 
-  updateSearch(key: string, value: string) {
-    let search = window.location.search;
-    if (value) {
-      if (!window.location.search.match(`${key}=[^&]*`)) {
-        if (window.location.search) {
-          search += `&${key}=${value}`;
-        } else {
-          search += `?${key}=${value}`;
-        }
-      } else {
-        search = search.replace(RegExp(`${key}=[^&]*`), `${key}=${value}`);
-      }
-    } else {
-      search = search.replace(RegExp(`[&?]?${key}=[^&]*`), "");
-    }
-    window.history.pushState({ key: value }, "", location.pathname + search);
-  }
-  getSearch(key: string): string {
-    const capGroup = window.location.search.match(`${key}=([^&]+)`);
-    if (capGroup && capGroup.length == 2) {
-      return capGroup[1];
-    }
-    return "";
-  }
   onSearch() {
-    this.updateSearch("search", this.search);
+    this.urlSearchService.set("search", this.search, true);
     this.pageUpdate(1);
   }
   created() {
-    this.search = decodeURIComponent(this.getSearch("search"));
-    this.page = Number.parseInt(
-      this.getSearch("page") ? this.getSearch("page") : "1"
-    );
-    const search = `?page=${this.page}${
-      this.search ? "&search=" + this.search : ""
-    }`;
-    window.history.pushState({}, "", location.pathname + search);
+    console.log(this.urlSearchService);
+    this.search = this.urlSearchService.get("search");
+    this.page = Number.parseInt(this.urlSearchService.get("page") || "1");
   }
 }
 </script>

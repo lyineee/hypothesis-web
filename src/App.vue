@@ -5,10 +5,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import {
+  Component,
+  Provide,
+  ProvideReactive,
+  Vue,
+} from "vue-property-decorator";
 import AnnotateList from "./components/AnnotateList.vue";
 import LoginPage from "./components/LoginPage.vue";
 import AppBar from "./components/AppBar.vue";
+import UrlSearchService from "./components/UrlSearchService";
 
 @Component({
   components: {
@@ -19,6 +25,8 @@ import AppBar from "./components/AppBar.vue";
 export default class App extends Vue {
   showLoginPage = false;
   currentPage!: any;
+  private searchKey = ["page", "search"];
+  @ProvideReactive("urlSearchService") urlSearch?: UrlSearchService = undefined;
   route = [
     {
       regex: /.*\/login.*/,
@@ -37,6 +45,8 @@ export default class App extends Vue {
   }
   created() {
     this.router(location.pathname);
+    this.urlSearch = new UrlSearchService(...this.searchKey);
+    console.log(this.urlSearch);
   }
 }
 </script>
