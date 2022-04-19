@@ -43,6 +43,16 @@ import { Annotation } from "./HypoServiceMixin";
 })
 export default class AnnotatePage extends Vue {
   @Prop() private data!: Array<Annotation>;
+  created() {
+    for (let a of this.data) {
+      if (!a.target[0].selector) {
+        // page note
+        this.data.splice(this.data.indexOf(a), 1);
+        this.data.splice(0, 0, a);
+        break;
+      }
+    }
+  }
 }
 </script>
 
