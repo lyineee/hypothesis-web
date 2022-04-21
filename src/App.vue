@@ -14,6 +14,10 @@ import AppBar from "./components/AppBar.vue";
 import UrlSearchService from "./components/UrlSearchService";
 import { VueConstructor } from "vue";
 import Router, { Route } from "./components/Router";
+import KeyboardService, {
+  WithKey,
+  registerOption,
+} from "./components/KeyboardService";
 
 @Component({
   components: {
@@ -44,6 +48,7 @@ export default class App extends Vue {
     location.pathname,
     this.updateRoute
   );
+  @ProvideReactive() keyboardService: KeyboardService = new KeyboardService();
 
   updateRoute(r: Route) {
     r.component && (this.currentPage = r.component);

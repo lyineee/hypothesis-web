@@ -10,7 +10,12 @@
               d="M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z"
             />
           </svg>
-          <input v-model="searchText" @keydown.enter="$emit('onSearch')" />
+          <input
+            ref="input"
+            v-model="searchText"
+            placeholder="按下 / 搜索"
+            @keydown.enter="$emit('onSearch')"
+          />
           <svg
             class="clear"
             :class="searchText ? '' : 'diable'"
@@ -26,7 +31,7 @@
         </div>
       </div>
       <div class="setting-container">
-        <a href="/login" @click.prevent='router.goto("/login")'>
+        <a href="/login" @click.prevent="router.goto('/login')">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
             <path
@@ -41,14 +46,47 @@
 
 <script lang="ts">
 import { mixins } from "vue-class-component";
-import { Component, InjectReactive, PropSync, Vue } from "vue-property-decorator";
+import {
+  Component,
+  InjectReactive,
+  PropSync,
+  Ref,
+  Vue,
+} from "vue-property-decorator";
 import HypoServiceMixin from "./HypoServiceMixin";
+import KeyboardService from "./KeyboardService";
 import Router from "./Router";
 
 @Component
 export default class Annotate extends mixins(Vue, HypoServiceMixin) {
   @PropSync("text") searchText?: string;
-  @InjectReactive() router!:Router
+  @InjectReactive() router!: Router;
+  @InjectReactive() keyboardService!: KeyboardService;
+  @Ref("input") input!: HTMLInputElement;
+
+  created() {
+    this.keyboardService.register(
+      "/",
+      (() => {
+        return () => {
+          this.input.focus();
+        };
+      })(),
+      { preventDefault: true }
+    );
+  }
+
+  mounted() {
+    this.keyboardService.register(
+      "Escape",
+      (() => {
+        return () => {
+          this.input.blur();
+        };
+      })(),
+      { target: this.input } // this.input has value after mounted
+    );
+  }
 }
 </script>
 
@@ -105,6 +143,13 @@ $on-background: map-get(theme.$palette, "on-background");
           &:focus {
             outline: none;
             border: none;
+          }
+          &:focus::placeholder {
+            opacity: 0;
+          }
+          &::placeholder {
+            font-size: 0.9em;
+            color: hsl(0, 0%, 80%);
           }
         }
         .clear {

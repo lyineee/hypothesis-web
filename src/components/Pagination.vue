@@ -3,8 +3,9 @@
     <li>
       <a
         class="page-btn btn-prev"
+        ref="btn-prev"
         :class="page == 1 ? 'disable' : ''"
-        @click.prevent="pageList[0] == 1 ? '' : (page = pageNumber - 1)"
+        @click.prevent="page != 1 ? (page = pageNumber - 1) : ''"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +36,7 @@
     <li>
       <a
         class="page-btn btn-next"
+        ref="btn-next"
         :class="page == total ? 'disable' : ''"
         @click.prevent="page != total ? (page = pageNumber + 1) : ''"
       >
@@ -55,11 +57,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+import {
+  Component,
+  Emit,
+  InjectReactive,
+  Prop,
+  Ref,
+  Vue,
+} from "vue-property-decorator";
+import KeyboardService from "./KeyboardService";
 
 @Component
 export default class AnnotateTags extends Vue {
   maxPage = 4;
+  @Ref("btn-prev") btnPrev!: HTMLElement;
+  @Ref("btn-next") btnNext!: HTMLElement;
+  @InjectReactive() keyboardService!: KeyboardService;
   @Prop({ type: Number }) private total!: number;
   @Prop() pageNumber!: number; //if not assign an initail value, pageNumber will be immutable. I can not figure out why.
   get pageList() {
@@ -93,6 +106,22 @@ export default class AnnotateTags extends Vue {
     window
       .matchMedia("(max-width: 400px)")
       .addEventListener("change", this.onMediaChange);
+    this.keyboardService.register(
+      "ArrowLeft",
+      (() => {
+        return () => {
+          this.btnPrev.click();
+        };
+      })()
+    );
+    this.keyboardService.register(
+      "ArrowRight",
+      (() => {
+        return () => {
+          this.btnNext.click();
+        };
+      })()
+    );
   }
 }
 </script>
