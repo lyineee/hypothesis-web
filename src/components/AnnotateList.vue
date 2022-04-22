@@ -1,7 +1,12 @@
 <template>
   <div>
-    <AppBar class="app-bar" :text.sync="search" @onSearch="onSearch" />
-    <div class="anno-list">
+    <AppBar
+      ref="appBar"
+      class="app-bar"
+      :text.sync="search"
+      @onSearch="onSearch"
+    />
+    <div class="anno-list" :class="loading ? 'loading' : ''">
       <div class="page-item" v-for="(page, index) in data" :key="index">
         <AnnotatePage :data="page" />
       </div>
@@ -11,16 +16,22 @@
         @pageUpdate="pageUpdate($event)"
       />
     </div>
+    <FloatButton
+      class="to-top"
+      :class="showToTop ? '' : 'hidden'"
+      @click="toTop(true)"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, InjectReactive, Vue } from "vue-property-decorator";
+import { Component, InjectReactive, Ref, Vue } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import AnnotatePage from "./AnnotatePage.vue";
 import HypoServiceMixin, { Annotation } from "./HypoServiceMixin";
 import Pagenation from "./Pagination.vue";
 import AppBar from "./AppBar.vue";
+import FloatButton from "./FloatButton.vue";
 import UrlSearchService from "./UrlSearchService";
 
 @Component({
@@ -28,6 +39,7 @@ import UrlSearchService from "./UrlSearchService";
     AnnotatePage,
     Pagenation,
     AppBar,
+    FloatButton,
   },
 })
 export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
@@ -36,11 +48,15 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   totalPage = 1;
   search = "";
   page = 1;
+  loading = false;
+  showToTop = true;
   @InjectReactive("urlSearchService") urlSearchService!: UrlSearchService;
+  @Ref("appBar") appBar!: Vue;
   pageUpdate(page: number) {
+    this.loading = true;
+    this.toTop();
     this.urlSearchService.set("page", page.toString(), true);
     this.page = page;
-    this.data = [];
     if (this.search != "") {
       this.searchAnno(
         (page - 1) * this.pageSize,
@@ -52,20 +68,24 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
         this.getSearchProperty(this.search, "quote"),
         this.getSearchProperty(this.search, "text"),
         this.getSearchProperty(this.search, "url")
-      ).then((rawData) => {
-        this.totalPage = Math.ceil(rawData.total / this.pageSize);
-        this.renderList(rawData.rows);
-      });
+      )
+        .then((rawData) => {
+          this.totalPage = Math.ceil(rawData.total / this.pageSize);
+          this.renderList(rawData.rows);
+        })
+        .finally(() => (this.loading = false));
       return;
     }
-    this.getList(
-      this.getUser(),
-      (page - 1) * this.pageSize,
-      this.pageSize
-    ).then((rawData) => {
-      this.totalPage = Math.ceil(rawData.total / this.pageSize);
-      this.renderList(rawData.rows);
-    });
+    this.getList(this.getUser(), (page - 1) * this.pageSize, this.pageSize)
+      .then((rawData) => {
+        this.totalPage = Math.ceil(rawData.total / this.pageSize);
+        this.renderList(rawData.rows);
+      })
+      .finally(() => (this.loading = false));
+  }
+
+  toTop(smooth?: boolean) {
+    window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
   }
 
   getSearchProperty(searchText: string, key: string): string | undefined {
@@ -78,6 +98,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   renderList(data: Array<Annotation>) {
     let prevUri = "";
     let pageList = [];
+    this.data = [];
     for (let anno of data) {
       if (anno.uri != prevUri) {
         pageList.length != 0 ? this.data.push(pageList) : "";
@@ -97,6 +118,15 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
     this.search = this.urlSearchService.get("search");
     this.page = Number.parseInt(this.urlSearchService.get("page") || "1");
   }
+  mounted() {
+    let observer = new IntersectionObserver(
+      (() => {
+        return (e: Array<IntersectionObserverEntry>) =>
+          (this.showToTop = !e[0].isIntersecting);
+      })()
+    );
+    observer.observe(this.appBar.$el);
+  }
 }
 </script>
 
@@ -108,7 +138,20 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
     margin-bottom: 0.5em;
   }
 }
+.anno-list.loading {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: hsl(0, 0%, 70%);
+    opacity: 0.5;
+  }
+}
 .anno-list {
+  position: relative;
   background-color: hsla(0, 0%, 98%);
   border: solid 1px hsla(0, 0%, 90%);
   margin-left: 10%;
@@ -135,6 +178,18 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
       width: 90%;
       right: 5%;
     }
+  }
+}
+.to-top {
+  position: fixed;
+  right: 10vh;
+  bottom: 10vh;
+  transition: transform 0.15s;
+  @media screen and (max-width: 900px) {
+    transform: scale(0);
+  }
+  &.hidden {
+    transform: scale(0);
   }
 }
 </style>

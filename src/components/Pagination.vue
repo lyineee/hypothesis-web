@@ -7,16 +7,8 @@
         :class="page == 1 ? 'disable' : ''"
         @click.prevent="page != 1 ? (page = pageNumber - 1) : ''"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="8"
-          height="12"
-          class="svg-icon"
-        >
-          <path
-            d="m3.414 6 3.293 3.293.707.707L6 11.414l-.707-.707-4-4L.586 6l.353-.354.354-.353 4-4L6 .586 7.414 2l-.707.707z"
-            fill-rule="evenodd"
-          ></path>
+        <svg width="8" height="12">
+          <use xlink:href="../assets/leftarrow.svg#leftarrow"></use>
         </svg>
       </a>
     </li>
@@ -40,16 +32,8 @@
         :class="page == total ? 'disable' : ''"
         @click.prevent="page != total ? (page = pageNumber + 1) : ''"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="8"
-          height="12"
-          class="svg-icon"
-        >
-          <path
-            d="M4.586 6 1.293 9.293.586 10 2 11.414l.707-.707 4-4L7.414 6l-.353-.354-.354-.353-4-4L2 .586.586 2l.707.707z"
-            fill-rule="evenodd"
-          ></path>
+        <svg width="8" height="12">
+          <use xlink:href="../assets/leftarrow.svg#leftarrow"></use>
         </svg>
       </a>
     </li>
@@ -159,6 +143,11 @@ export default class AnnotateTags extends Vue {
       &:hover {
         background-color: hsl(0, 0%, 80%);
         fill: hsl(0, 0%, 65%);
+      }
+    }
+    .btn-next {
+      svg {
+        transform: rotate(180deg);
       }
     }
     .btn-next,
