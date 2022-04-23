@@ -2,13 +2,15 @@
   <div>
     <div class="title-container">
       <h1 class="page-title">
-        {{ data[0].document.title[0] }}
+        {{ renderData[0].document.title[0] }}
       </h1>
       <span class="spacer" />
-      <span class="anno-count">{{ data.length }}</span>
+      <span class="anno-count">{{ renderData.length }}</span>
     </div>
     <div class="anno-link">
-      <a class="link" :href="data[0].uri" target="_blank">{{ data[0].uri }}</a>
+      <a class="link" :href="renderData[0].uri" target="_blank">{{
+        renderData[0].uri
+      }}</a>
       <span class="link-svg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,33 +27,66 @@
       </span>
     </div>
 
-    <div class="anno" v-for="anno in data" :key="anno.id">
+    <div class="anno" v-for="anno in renderData" :key="anno.id">
       <Annotate :data="anno" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { mixins } from "vue-class-component";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import Annotate from "./Annotate.vue";
-import { Annotation } from "./HypoServiceMixin";
+import HypoServiceMixin, { Annotation } from "./HypoServiceMixin";
 
 @Component({
   components: {
     Annotate,
   },
 })
-export default class AnnotatePage extends Vue {
+export default class AnnotatePage extends mixins(Vue, HypoServiceMixin) {
   @Prop() private data!: Array<Annotation>;
-  created() {
-    for (let a of this.data) {
+  renderData: Array<Annotation> = [];
+  @Prop({ default: false }) expand!: boolean;
+  @Watch("data")
+  onDataChange() {
+    this.reload();
+  }
+  @Watch("expand")
+  reload() {
+    this.renderData = Object.assign([], this.data);
+    if (this.expand) {
+      this.searchAnno(
+        0,
+        30,
+        this.getUser(),
+        this.getToken(),
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        encodeURIComponent(this.data[0].uri)
+      ).then((resp) => {
+        this.renderPage(resp.rows);
+      });
+    } else {
+      this.renderPage(this.data);
+    }
+  }
+
+  renderPage(data: Array<Annotation>) {
+    this.renderData = Object.assign([], data);
+    for (let a of this.renderData) {
       if (!a.target[0].selector) {
         // page note
-        this.data.splice(this.data.indexOf(a), 1);
-        this.data.splice(0, 0, a);
+        this.renderData.splice(this.renderData.indexOf(a), 1);
+        this.renderData.splice(0, 0, a);
         break;
       }
     }
+  }
+  created() {
+    this.reload();
   }
 }
 </script>

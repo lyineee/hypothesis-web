@@ -8,7 +8,7 @@
     />
     <div class="anno-list" :class="loading ? 'loading' : ''">
       <div class="page-item" v-for="(page, index) in data" :key="index">
-        <AnnotatePage :data="page" />
+        <AnnotatePage :data="page" :expand="expand" />
       </div>
       <Pagenation
         :pageNumber="page"
@@ -50,6 +50,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   page = 1;
   loading = false;
   showToTop = true;
+  expand = false;
   @InjectReactive("urlSearchService") urlSearchService!: UrlSearchService;
   @Ref("appBar") appBar!: Vue;
   pageUpdate(page: number) {
@@ -57,6 +58,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
     this.toTop();
     this.urlSearchService.set("page", page.toString(), true);
     this.page = page;
+    this.expand = !!this.search.match(/(?:^| )expand:[^ ]*/);
     if (this.search != "") {
       this.searchAnno(
         (page - 1) * this.pageSize,
@@ -65,9 +67,10 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
         this.getToken(),
         encodeURIComponent(
           this.search
-            .replaceAll(/(?<=tag|url|text|quote):[^ ]+/g, "")
-            .replaceAll(/tag|url|text|quote/g, "")
+            .replaceAll(/(?<=tag|url|text|quote|expand):[^ ]*/g, "")
+            .replaceAll(/tag|url|text|quote|expand/g, "")
             .replaceAll(/ +/g, " ")
+            .trim()
         ),
         this.getSearchProperty(this.search, "tag")?.split(","),
         this.getSearchProperty(this.search, "quote"),
@@ -121,7 +124,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
     this.pageUpdate(1);
   }
   created() {
-    this.search = this.urlSearchService.get("search");
+    this.search = decodeURIComponent(this.urlSearchService.get("search"));
     this.page = Number.parseInt(this.urlSearchService.get("page") || "1");
   }
   mounted() {
