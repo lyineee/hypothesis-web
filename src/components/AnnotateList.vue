@@ -63,11 +63,17 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
         this.pageSize,
         this.getUser(),
         this.getToken(),
-        this.search.replaceAll(/\w+:[^ ]*/g, "").trim(),
+        encodeURIComponent(
+          this.search
+            .replaceAll(/(?<=tag|url|text|quote):[^ ]+/g, "")
+            .replaceAll(/tag|url|text|quote/g, "")
+            .replaceAll(/ +/g, " ")
+        ),
         this.getSearchProperty(this.search, "tag")?.split(","),
         this.getSearchProperty(this.search, "quote"),
         this.getSearchProperty(this.search, "text"),
-        this.getSearchProperty(this.search, "url")
+        encodeURIComponent(this.getSearchProperty(this.search, "url") || "") ||
+          undefined
       )
         .then((rawData) => {
           this.totalPage = Math.ceil(rawData.total / this.pageSize);
@@ -89,7 +95,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   }
 
   getSearchProperty(searchText: string, key: string): string | undefined {
-    const match = searchText.match(`${key}:([^ ]*)`);
+    const match = searchText.match(`${key}:([^ ]+)`);
     if (match?.length == 2) {
       return match[1];
     }
