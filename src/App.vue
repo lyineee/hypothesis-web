@@ -18,6 +18,7 @@ import KeyboardService, {
   WithKey,
   registerOption,
 } from "./components/KeyboardService";
+import ThemeService from "./components/ThemeService";
 
 @Component({
   components: {
@@ -49,6 +50,7 @@ export default class App extends Vue {
     this.updateRoute
   );
   @ProvideReactive() keyboardService: KeyboardService = new KeyboardService();
+  @ProvideReactive() themeService: ThemeService = new ThemeService();
 
   updateRoute(r: Route) {
     r.component && (this.currentPage = r.component);
@@ -70,7 +72,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  // color: #2c3e50;
+  color: var(--foreground-color-secondary);
+  background: var(--background-color-primary);
+  transition: color 0.2s, background 0.2s;
   @media print {
     margin: 0px;
   }
