@@ -1,34 +1,66 @@
 @use "sass:color";
+@use "sass:list";
 
+$theme: "light";
 $step: 5%;
 
 $layout-breakpoint-small: 400px;
 $layout-breakpoint-medium: 900px;
 
+// $color-palette-light: (
+//     primary: hsl(204deg 100% 80%),
+//     primary-variant: hsl(204deg 90% 60%),
+//     secondary: hsl(0, 90%, 70%),
+//     secondary-variant: hsl(0, 85%, 60%),
+//     background: hsla(0, 0%, 98%),
+//     on-primary: hsl(210deg 29% 24%),
+//     on-background: hsl(210deg 29% 24%),
+// );
+
 $color-palette-light: (
     primary: hsl(204deg 100% 80%),
-    primary-variant: hsl(204deg 100% 70%),
+    primary-variant: hsl(204deg 90% 60%),
     secondary: hsl(0, 90%, 70%),
-    secondary-variant: hsl(0, 90%, 60%),
+    secondary-variant: hsl(0, 85%, 60%),
     background: hsla(0, 0%, 98%),
-    on-dark: hsl(0, 0%, 95%),
     on-primary: hsl(210deg 29% 24%),
     on-background: hsl(210deg 29% 24%),
+    background-color-primary: var(--background-color-primary),
+    background-color-secondary: var(--background-color-secondary),
+    background-color-secondary-variant: var(--background-color-secondary-variant),
+    foreground-color-primary: var(--foreground-color-primary),
+    foreground-color-primary-variant: var(--foreground-color-primary-variant),
+    accent-color: var(--accent-color),
+    accent-color-variant: var(--accent-color-variant),
+    accent-color-secondary: var(--accent-color-secondary),
+    accent-color-secondary-variant: var(--accent-color-secondary-variant),
+    text-color-primary: var(--text-color-primary),
+    text-color-secondary: var(--text-color-secondary),
 );
 
+// $background-color-primary: map-get(theme.$palette, "background-color-primary");
+// $background-color-secondary: map-get(theme.$palette, "background-color-secondary");
+// $background-color-secondary-variant: map-get(theme.$palette, "background-color-secondary-variant");
+// $foreground-color-primary: map-get(theme.$palette, "foreground-color-primary");
+// $foreground-color-primary-variant: map-get(theme.$palette, "foreground-color-primary-variant");
+// $accent-color: map-get(theme.$palette, "accent-color");
+// $accent-color-variant: map-get(theme.$palette, "accent-color-variant");
+// $accent-color-secondary: map-get(theme.$palette, "accent-color-secondary");
+// $accent-color-secondary-variant: map-get(theme.$palette, "accent-color-secondary-variant");
+// $text-color-primary: map-get(theme.$palette, "text-color-primary");
+// $text-color-secondary: map-get(theme.$palette, "text-color-secondary");
+
 $color-palette-dark: (
-    primary: hsl(0, 0%, 20%),
-    primary-variant: hsl(0, 0%, 30%),
-    secondary: hsl(0, 90%, 60%),
-    secondary-variant: hsl(0, 90%, 70%),
-    background: hsl(0, 0%, 80%),
-    on-dark: hsl(0, 0%, 20%),
+    primary: hsl(204deg 100% 80%),
+    primary-variant: hsl(204deg 90% 60%),
+    secondary: hsl(0, 90%, 70%),
+    secondary-variant: hsl(0, 85%, 60%),
+    background: hsl(0, 0%, 20%),
     on-primary: hsl(0, 0%, 90%),
     on-background: hsl(0, 0%, 90%),
 );
 
 $palette: $color-palette-light;
-// $palette: $color-palette-dark;
 
 @function darken($color, $d: 1) {
     @return color.scale($color, $lightness: -$d * $step);
@@ -36,4 +68,153 @@ $palette: $color-palette-light;
 
 @function lighten($color, $d: 1) {
     @return color.scale($color, $lightness: $d * $step);
+}
+:root[data-theme="dark"] {
+    $test: hsl(0, 0%, 80%) !important;
+}
+
+:root[data-theme="dark"] {
+    $palette: (
+        primary: hsl(204deg 100% 80%),
+        primary-variant: hsl(204deg 90% 60%),
+        secondary: hsl(0, 90%, 70%),
+        secondary-variant: hsl(0, 85%, 60%),
+        background: hsl(0, 0%, 20%),
+        on-primary: hsl(0, 0%, 90%),
+        on-background: hsl(0, 0%, 90%),
+    );
+
+    @function lighten($color, $d: 1) {
+        @return color.scale($color, $lightness: -$d * $step);
+    }
+
+    @function darken($color, $d: 1) {
+        @return color.scale($color, $lightness: $d * $step);
+    }
+}
+
+:root {
+    --text-color-primary: #2c3e50;
+    --text-color-secondary: #364c62;
+
+    $background-color-primary: #fff;
+    $foreground-color-primary: #000;
+    $foreground-color-secondary: #2c3e50;
+    $accent-color: #f76e6e;
+    $accent-color-secondary: hsl(204 100% 80%);
+
+    $bg-primary-base: hsl(color.hue($background-color-primary), 0%, 70%);
+    $bg-primary: [];
+    @for $i from 1 through 10 {
+        $color: color.adjust($bg-primary-base, $lightness: 3% * $i);
+        $bg-primary: append($bg-primary, $color);
+        --background-color-primary-#{$i}: #{$color};
+    }
+
+    $fg-primary-base: $foreground-color-primary;
+    $fg-primary: [];
+    @for $i from 1 through 10 {
+        $color: color.adjust($fg-primary-base, $lightness: 5% * $i);
+        $fg-primary: append($fg-primary, $color);
+        --foreground-color-primary-#{$i}: #{$color};
+    }
+
+    $fg-secondary-base: $foreground-color-secondary;
+    $fg-secondary: [];
+    @for $i from 1 through 15 {
+        $color: color.adjust($fg-secondary-base, $lightness: 3% * $i);
+        $fg-secondary: append($fg-secondary, $color);
+        --foreground-color-secondary-#{$i}: #{$color};
+    }
+
+    $accent-base: hsl(color.hue($accent-color), 100%, 30%);
+    $accent-primary: [];
+    @for $i from 1 through 10 {
+        $color: color.adjust($accent-base, $lightness: 5% * $i);
+        $accent-primary: append($accent-primary, $color);
+        --accent-color-primary-#{$i}: #{$color};
+    }
+
+    $accent-secondary-base: hsl(color.hue($accent-color-secondary), 100%, 10%);
+    $accent-secondary: [];
+    @for $i from 1 through 15 {
+        $color: color.adjust($accent-secondary-base, $lightness: 5% * $i);
+        $accent-secondary: append($accent-secondary, $color);
+        --accent-color-secondary-#{$i}: #{$color};
+    }
+
+    --background-color-primary: var(--background-color-primary-10);
+    --background-color-secondary: var(--background-color-primary-9);
+    --background-color-secondary-variant: var(--background-color-primary-7);
+    --foreground-color-primary: var(--foreground-color-primary-8);
+    --foreground-color-primary-variant: var(--foreground-color-primary-10);
+    --foreground-color-secondary: var(--foreground-color-secondary-1);
+    --foreground-color-secondary-variant: var(--foreground-color-secondary-7);
+    --accent-color: var(--accent-color-primary-8);
+    --accent-color-variant: var(--accent-color-primary-7);
+    --accent-color-secondary: var(--accent-color-secondary-14);
+    --accent-color-secondary-variant: var(--accent-color-secondary-10);
+}
+
+:root[data-theme="dark"] {
+    --text-color-primary: #2c3e50;
+    --text-color-secondary: #364c62;
+
+    $background-color-primary: rgb(0, 0, 0);
+    $foreground-color-primary: rgb(255, 255, 255);
+    $foreground-color-secondary: hsl(0, 0%, 100%);
+    $accent-color: #f8a2a2;
+    $accent-color-secondary: rgb(203, 234, 255);
+
+    $bg-primary-base: hsl(color.hue($background-color-primary), 0%, 50%);
+    $bg-primary: [];
+    @for $i from 1 through 10 {
+        $color: color.adjust($bg-primary-base, $lightness: -3% * $i);
+        $bg-primary: append($bg-primary, $color);
+        --background-color-primary-#{$i}: #{$color};
+    }
+
+    $fg-primary-base: $foreground-color-primary;
+    $fg-primary: [];
+    @for $i from 1 through 10 {
+        $color: color.adjust($fg-primary-base, $lightness: -2% * $i);
+        $fg-primary: append($fg-primary, $color);
+        --foreground-color-primary-#{$i}: #{$color};
+    }
+
+    $fg-secondary-base: $foreground-color-secondary;
+    $fg-secondary: [];
+    @for $i from 1 through 15 {
+        $color: color.adjust($fg-secondary-base, $lightness: -1% * $i);
+        $fg-secondary: append($fg-secondary, $color);
+        --foreground-color-secondary-#{$i}: #{$color};
+    }
+
+    $accent-base: hsl(color.hue($accent-color), 100%, 100%);
+    $accent-primary: [];
+    @for $i from 1 through 10 {
+        $color: color.adjust($accent-base, $lightness: -3% * $i);
+        $accent-primary: append($accent-primary, $color);
+        --accent-color-primary-#{$i}: #{$color};
+    }
+
+    $accent-secondary-base: hsl(color.hue($accent-color-secondary), 100%, 100%);
+    $accent-secondary: [];
+    @for $i from 1 through 15 {
+        $color: color.adjust($accent-secondary-base, $lightness: -2% * $i);
+        $accent-secondary: append($accent-secondary, $color);
+        --accent-color-secondary-#{$i}: #{$color};
+    }
+
+    --background-color-primary: var(--background-color-primary-10);
+    --background-color-secondary: var(--background-color-primary-9);
+    --background-color-secondary-variant: var(--background-color-primary-7);
+    --foreground-color-primary: var(--foreground-color-primary-8);
+    --foreground-color-primary-variant: var(--foreground-color-primary-10);
+    --foreground-color-secondary: var(--foreground-color-secondary-1);
+    --foreground-color-secondary-variant: var(--foreground-color-secondary-7);
+    --accent-color: var(--accent-color-primary-8);
+    --accent-color-variant: var(--accent-color-primary-7);
+    --accent-color-secondary: var(--accent-color-secondary-14);
+    --accent-color-secondary-variant: var(--accent-color-secondary-10);
 }

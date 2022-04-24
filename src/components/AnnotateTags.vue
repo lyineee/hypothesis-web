@@ -37,6 +37,31 @@ export default class AnnotateTags extends Vue {
 </script>
 
 <style scoped lang="scss">
+@use "scss/theme";
+$background-color-primary: map-get(theme.$palette, "background-color-primary");
+$background-color-secondary: map-get(
+  theme.$palette,
+  "background-color-secondary"
+);
+$background-color-secondary-variant: map-get(
+  theme.$palette,
+  "background-color-secondary-variant"
+);
+$foreground-color-primary: map-get(theme.$palette, "foreground-color-primary");
+$foreground-color-primary-variant: map-get(
+  theme.$palette,
+  "foreground-color-primary-variant"
+);
+$accent-color: map-get(theme.$palette, "accent-color");
+$accent-color-variant: map-get(theme.$palette, "accent-color-variant");
+$accent-color-secondary: map-get(theme.$palette, "accent-color-secondary");
+$accent-color-secondary-variant: map-get(
+  theme.$palette,
+  "accent-color-secondary-variant"
+);
+$text-color-primary: map-get(theme.$palette, "text-color-primary");
+$text-color-secondary: map-get(theme.$palette, "text-color-secondary");
+
 .tag-container {
   margin: 0.5em 0em;
 }
@@ -44,7 +69,7 @@ export default class AnnotateTags extends Vue {
   // padding: 0.3em;
   display: flex;
   .tag {
-    background-color: hsl(0, 0%, 95%);
+    background-color: $background-color-secondary-variant;
     margin: 0 0.3em;
     padding: 0.2em 0.5em;
     display: flex;
@@ -69,17 +94,17 @@ export default class AnnotateTags extends Vue {
     font-weight: normal;
     font-size: 13px;
     padding: 0.5em 0.75em;
-    border: 1px solid #dbdbdb;
+    border: 1px solid var(--background-color-primary-5);
     border-radius: 2px;
-    color: #737373;
-    background-color: #fafafa;
+    color: var(--foreground-color-secondary);
+    background-color: var(--background-color-primary-9);
     line-height: 1;
     width: 100%;
     transition: 0.1s;
     &:focus {
       outline: none;
-      box-shadow: 0 0 0 2px #59a7e8;
-      background-color: #fff;
+      box-shadow: 0 0 0 2px var(--accent-color-secondary-7);
+      background-color: var(--background-color-primary);
     }
   }
 }

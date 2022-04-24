@@ -105,6 +105,30 @@ $background: map-get(theme.$palette, "background");
 $secondary: map-get(theme.$palette, "secondary");
 $on-background: map-get(theme.$palette, "on-background");
 
+$background-color-primary: map-get(theme.$palette, "background-color-primary");
+$background-color-secondary: map-get(
+  theme.$palette,
+  "background-color-secondary"
+);
+$background-color-secondary-variant: map-get(
+  theme.$palette,
+  "background-color-secondary-variant"
+);
+$foreground-color-primary: map-get(theme.$palette, "foreground-color-primary");
+$foreground-color-primary-variant: map-get(
+  theme.$palette,
+  "foreground-color-primary-variant"
+);
+$accent-color: map-get(theme.$palette, "accent-color");
+$accent-color-variant: map-get(theme.$palette, "accent-color-variant");
+$accent-color-secondary: map-get(theme.$palette, "accent-color-secondary");
+$accent-color-secondary-variant: map-get(
+  theme.$palette,
+  "accent-color-secondary-variant"
+);
+$text-color-primary: map-get(theme.$palette, "text-color-primary");
+$text-color-secondary: map-get(theme.$palette, "text-color-secondary");
+
 .annotation-content {
   .quote-content {
     font-size: 0.9em;
@@ -113,7 +137,7 @@ $on-background: map-get(theme.$palette, "on-background");
     padding-left: 0.4em;
     text-align: start;
     width: 70%;
-    border-left: solid 3.5px theme.darken($background);
+    border-left: solid 3.5px var(--background-color-secondary-variant);
   }
   .btn-container {
     padding: 0.3em 0.5em 0.3em 0em;
@@ -127,11 +151,11 @@ $on-background: map-get(theme.$palette, "on-background");
       padding: 0.3em 1em;
       font-size: 1.2em;
       border: none;
-      color: $on-background;
-      background-color: theme.darken($background, 2);
+      background-color: var(--background-color-primary-6);
+      color: var(--foreground-color-1);
       transition: background-color 0.2s;
       &:hover {
-        background-color: theme.darken($background, 5);
+        background-color: var(--background-color-primary-2);
         cursor: pointer;
       }
       img {
@@ -147,7 +171,6 @@ $on-background: map-get(theme.$palette, "on-background");
       position: relative;
       height: 1.3em;
       background: transparent;
-      color: $primary;
       padding: 0;
       @media (hover: hover) {
         opacity: 0; // hide edit icon when device can hover
@@ -163,16 +186,10 @@ $on-background: map-get(theme.$palette, "on-background");
       }
     }
     .save-btn {
-      background-color: theme.darken(
-        map-get(theme.$palette, "primary-variant"),
-        10
-      );
-      color: map-get(theme.$palette, "on-dark");
+      background-color: var(--accent-color-secondary-5);
+      color: var(--background-color-primary);
       &:hover {
-        background-color: theme.darken(
-          map-get(theme.$palette, "primary-variant"),
-          15
-        );
+        background-color: var(--accent-color-secondary-3);
       }
     }
   }
@@ -183,7 +200,7 @@ $on-background: map-get(theme.$palette, "on-background");
       }
     }
     .quote-content {
-      border-left: solid 3.5px $primary; // hight light quote content when hover
+      border-left: solid 3.5px var(--accent-color-secondary); // hight light quote content when hover
     }
   }
 }

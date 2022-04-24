@@ -155,14 +155,14 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
     left: 0px;
     width: 100%;
     height: 100%;
-    background: hsl(0, 0%, 70%);
+    background: var(--foreground-color-primary-10);
     opacity: 0.5;
   }
 }
 .anno-list {
   position: relative;
-  background-color: hsla(0, 0%, 98%);
-  border: solid 1px hsla(0, 0%, 90%);
+  background-color: var(--background-color-primary-9);
+  border: solid 1px var(--background-color-primary-7);
   margin-left: 10%;
   margin-right: 30%;
   padding: 2em;
@@ -181,7 +181,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
     &::after {
       content: "";
       position: absolute;
-      background: hsl(0, 0%, 90%);
+      background: var(--background-color-primary-7);
       bottom: 0px;
       height: 2px;
       width: 90%;

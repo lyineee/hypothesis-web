@@ -45,11 +45,11 @@ div {
           transform: scale(1.25);
       }
     }
-    background-color: hsl(0, 0%, 80%);
+    background-color: var(--background-color-primary-3);
     transition: background-color 0.2s, fill 0.2s;
     &:hover {
-      fill: white;
-      background-color: hsl(0, 90%, 70%);
+      fill: var(--background-color-primary);
+      background-color: var(--accent-color-primary-9);
     }
   }
 }

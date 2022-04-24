@@ -127,22 +127,23 @@ export default class AnnotateTags extends Vue {
       padding: 0.4em 0.7em;
       border-radius: 9%;
       transition: background-color 0.1s;
+      fill: var(--foreground-color-primary-10);
       &:hover {
-        background-color: hsl(0, 0%, 80%);
+        background-color: var(--background-color-primary-3);
       }
     }
     .page-btn.disable {
-      background-color: hsl(0, 0%, 80%);
+      background-color: var(--background-color-primary-3);
       cursor: default;
     }
     .btn-next.disable,
     .btn-prev.disable {
-      background-color: hsl(0, 0%, 80%);
-      fill: hsl(0, 0%, 65%);
+      background-color: var(--background-color-primary-3);
+      fill: var(--foreground-color-primary-10);
       cursor: default;
       &:hover {
-        background-color: hsl(0, 0%, 80%);
-        fill: hsl(0, 0%, 65%);
+        background-color: var(--background-color-primary-3);
+        fill: var(--foreground-color-primary-10);
       }
     }
     .btn-next {
@@ -153,11 +154,11 @@ export default class AnnotateTags extends Vue {
     .btn-next,
     .btn-prev {
       padding: 0.4em 0.7em;
-      background-color: hsl(0, 0%, 80%);
+      background-color: var(--background-color-primary-3);
       transition: background-color 0.2s, fill 0.2s;
       &:hover {
-        fill: white;
-        background-color: hsl(0, 90%, 70%);
+        fill: var(--background-color-primary);
+        background-color: var(--accent-color);
       }
     }
   }

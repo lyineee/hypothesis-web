@@ -23,6 +23,14 @@
         <a href="/login" @click.prevent="router.goto('/login')">
           <img src="../assets/gear.svg" />
         </a>
+        <a @click.prevent="toggleTheme">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+              d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"
+            />
+          </svg>
+        </a>
       </div>
     </div>
   </header>
@@ -39,6 +47,7 @@ import {
 } from "vue-property-decorator";
 import HypoServiceMixin from "./HypoServiceMixin";
 import KeyboardService from "./KeyboardService";
+import ThemeService from "./ThemeService";
 import Router from "./Router";
 
 @Component
@@ -46,8 +55,16 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
   @PropSync("text") searchText?: string;
   @InjectReactive() router!: Router;
   @InjectReactive() keyboardService!: KeyboardService;
+  @InjectReactive() themeService!: ThemeService;
   @Ref("input") input!: HTMLInputElement;
 
+  toggleTheme() {
+    if (this.themeService.theme == "dark") {
+      this.themeService.theme = "light";
+    } else {
+      this.themeService.theme = "dark";
+    }
+  }
   created() {
     this.keyboardService.register(
       "/",
@@ -89,8 +106,8 @@ $on-background: map-get(theme.$palette, "on-background");
   height: 3em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  border-bottom: 2px solid theme.darken($background);
-  background-color: $background;
+  border-bottom: 2px solid var(--background-color-primary-8);
+  background-color: var(--background-color-secondary);
   @media (max-width: theme.$layout-breakpoint-small) {
     height: 2.5em;
     padding-top: 0.2em;
@@ -109,8 +126,8 @@ $on-background: map-get(theme.$palette, "on-background");
       .search-box {
         width: 100%;
         padding: 0.1em 1em 0.1em 0.5em;
-        border: 2px solid theme.darken($background);
-        background-color: theme.lighten($background, 20);
+        border: 2px solid var(--background-color-primary-8);
+        background-color: var(--background-color-primary);
         margin-right: 8em;
         position: relative;
         display: flex;
@@ -128,7 +145,8 @@ $on-background: map-get(theme.$palette, "on-background");
           border: none;
           font-size: 1.2em;
           width: 100%;
-          color: $on-background;
+          color: var(--foreground-color-secondary);
+          background: var(--background-primary);
           &:focus {
             outline: none;
             border: none;
@@ -138,7 +156,7 @@ $on-background: map-get(theme.$palette, "on-background");
           }
           &::placeholder {
             font-size: 0.9em;
-            color: hsl(0, 0%, 80%);
+            color: var(--background-color-primary-4);
           }
         }
         .clear {
@@ -159,6 +177,7 @@ $on-background: map-get(theme.$palette, "on-background");
       align-items: center;
       svg,
       img {
+        cursor: pointer;
         height: 1.4em;
         margin-right: 1em;
       }

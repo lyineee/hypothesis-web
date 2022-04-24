@@ -92,6 +92,31 @@ export default class AnnotatePage extends mixins(Vue, HypoServiceMixin) {
 </script>
 
 <style scoped lang="scss">
+@use "scss/theme";
+$background-color-primary: map-get(theme.$palette, "background-color-primary");
+$background-color-secondary: map-get(
+  theme.$palette,
+  "background-color-secondary"
+);
+$background-color-secondary-variant: map-get(
+  theme.$palette,
+  "background-color-secondary-variant"
+);
+$foreground-color-primary: map-get(theme.$palette, "foreground-color-primary");
+$foreground-color-primary-variant: map-get(
+  theme.$palette,
+  "foreground-color-primary-variant"
+);
+$accent-color: map-get(theme.$palette, "accent-color");
+$accent-color-variant: map-get(theme.$palette, "accent-color-variant");
+$accent-color-secondary: map-get(theme.$palette, "accent-color-secondary");
+$accent-color-secondary-variant: map-get(
+  theme.$palette,
+  "accent-color-secondary-variant"
+);
+$text-color-primary: map-get(theme.$palette, "text-color-primary");
+$text-color-secondary: map-get(theme.$palette, "text-color-secondary");
+
 .title-container {
   display: flex;
   .page-title {
@@ -116,9 +141,9 @@ export default class AnnotatePage extends mixins(Vue, HypoServiceMixin) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: hsl(0, 0%, 52%);
+  color: $foreground-color-primary-variant;
   .link {
-    color: hsl(0deg, 0%, 52%);
+    color: $foreground-color-primary-variant;
     text-decoration: none;
   }
   .link-svg {
