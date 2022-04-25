@@ -1,0 +1,4 @@
+@mixin svg($icon-name) {
+    mask-image: url("../assets/#{$icon-name}.svg");
+    mask-repeat: no-repeat;
+}

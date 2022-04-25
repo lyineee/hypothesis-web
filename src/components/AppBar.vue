@@ -4,24 +4,23 @@
       <div class="spacer" />
       <div class="search-box-container">
         <div class="search-box">
-          <img class="search-icon" src="../assets/search.svg" />
+          <div class="search-icon" />
           <input
             ref="input"
             v-model="searchText"
             placeholder="按下 / 搜索"
             @keydown.enter="$emit('onSearch')"
           />
-          <img
+          <div
             class="clear"
             :class="searchText ? '' : 'diable'"
             @click="searchText ? (searchText = '') || $emit('onSearch') : ''"
-            src="../assets/cross.svg"
           />
         </div>
       </div>
       <div class="setting-container">
         <a href="/login" @click.prevent="router.goto('/login')">
-          <img src="../assets/gear.svg" />
+          <div class="setting" />
         </a>
         <a @click.prevent="toggleTheme">
           <svg
@@ -123,12 +122,20 @@ export default class Annotate extends mixins(Vue, HypoServiceMixin) {
 
 <style scoped lang="scss">
 @use "scss/theme";
+@use "scss/svg";
 
 $primary: map-get(theme.$palette, "primary");
 $background: map-get(theme.$palette, "background");
 $secondary: map-get(theme.$palette, "secondary");
 $on-background: map-get(theme.$palette, "on-background");
 
+@mixin icon {
+  position: relative;
+  top: 0.5em;
+  padding: 1em;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 .app-bar {
   position: relative;
   top: 0px;
@@ -161,14 +168,10 @@ $on-background: map-get(theme.$palette, "on-background");
         margin-right: 8em;
         position: relative;
         display: flex;
-        img.search-icon {
-          filter: invert(45%) sepia(9%) saturate(1934%) hue-rotate(169deg)
-            brightness(86%) contrast(82%); // from https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element
-        }
-        img {
-          padding: 0.6em;
-          user-select: none;
-          -webkit-user-drag: none;
+        div.search-icon {
+          @include svg.svg("search");
+          background-color: var(--foreground-color-secondary-3);
+          @include icon;
         }
         input {
           outline: none;
@@ -190,7 +193,10 @@ $on-background: map-get(theme.$palette, "on-background");
           }
         }
         .clear {
-          padding: 0.5em;
+          @include svg.svg("cross");
+          @include icon;
+          background-color: var(--foreground-color-secondary-3);
+          // padding: 0.5em;
           transition: opacity 0.2s;
           cursor: pointer;
         }
@@ -211,9 +217,17 @@ $on-background: map-get(theme.$palette, "on-background");
           margin-left: 0px;
         }
       }
-      svg,
-      img {
+      .setting {
+        @include svg.svg("gear");
+        background-color: var(--foreground-color-secondary-3);
+        margin-right: 1em;
+        padding: 0.7em;
+        position: relative;
+        top: -0.1em;
+      }
+      svg {
         cursor: pointer;
+        fill: var(--foreground-color-secondary-3);
         height: 1.4em;
         margin-right: 1em;
       }

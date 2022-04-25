@@ -7,9 +7,10 @@
         :class="page == 1 ? 'disable' : ''"
         @click.prevent="page != 1 ? (page = pageNumber - 1) : ''"
       >
-        <svg width="8" height="12">
+        <div />
+        <!-- <svg width="8" height="12">
           <use xlink:href="../assets/leftarrow.svg#leftarrow"></use>
-        </svg>
+        </svg> -->
       </a>
     </li>
     <li v-if="pageList[0] != 1">
@@ -32,9 +33,10 @@
         :class="page == total ? 'disable' : ''"
         @click.prevent="page != total ? (page = pageNumber + 1) : ''"
       >
-        <svg width="8" height="12">
+        <!-- <svg width="8" height="12">
           <use xlink:href="../assets/leftarrow.svg#leftarrow"></use>
-        </svg>
+        </svg> -->
+        <div class="arrow-right" />
       </a>
     </li>
   </ul>
@@ -111,6 +113,7 @@ export default class AnnotateTags extends Vue {
 </script>
 
 <style scoped lang="scss">
+@use "scss/svg";
 .pagenation-container {
   display: flex;
   list-style: none;
@@ -139,23 +142,41 @@ export default class AnnotateTags extends Vue {
     .btn-next.disable,
     .btn-prev.disable {
       background-color: var(--background-color-primary-3);
-      fill: var(--foreground-color-primary-10);
+      div {
+        background-color: var(--foreground-color-primary-10);
+      }
       cursor: default;
       &:hover {
         background-color: var(--background-color-primary-3);
-        fill: var(--foreground-color-primary-10);
       }
     }
     .btn-next {
-      svg {
+      padding-left: 0.3em;
+      padding-right: 0.5em;
+      div {
         transform: rotate(180deg);
       }
     }
+    .btn-prev {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
     .btn-next,
     .btn-prev {
-      padding: 0.4em 0.7em;
       background-color: var(--background-color-primary-3);
       transition: background-color 0.2s, fill 0.2s;
+
+      display: block;
+      position: relative;
+      top: -0.4em;
+      div {
+        @include svg.svg("leftarrow");
+        background-color: var(--foreground-color-secondary-3);
+        // display: inline;
+        position: relative;
+        padding: 0.55em;
+        // top: 0.5em;
+      }
       &:hover {
         fill: var(--background-color-primary);
         background-color: var(--accent-color);
