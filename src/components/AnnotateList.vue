@@ -67,8 +67,7 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
         this.getToken(),
         encodeURIComponent(
           this.search
-            .replaceAll(/(?<=tag|url|text|quote|expand):[^ ]*/g, "")
-            .replaceAll(/tag|url|text|quote|expand/g, "")
+            .replaceAll(/(?:\s|^)(tag|url|text|quote|expand):[^ ]*/g, "")
             .replaceAll(/ +/g, " ")
             .trim()
         ),
