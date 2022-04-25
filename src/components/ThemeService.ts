@@ -4,6 +4,7 @@ export default class ThemeService {
     private currentTheme: ThemeString = "light"
     private systemTheme!: ThemeString
     private setting!: ThemeSetting
+    private darkQuery!: MediaQueryList
     private settingStore = "themeSetting"
 
     private set theme(theme: ThemeString) {
@@ -25,6 +26,7 @@ export default class ThemeService {
             this.setting.theme = theme
         } else {
             this.setting.theme = undefined
+            this.systemTheme = this.theme = this.darkQuery.matches ? "dark" : "light"
         }
         this.updateSetting()
     }
@@ -45,9 +47,9 @@ export default class ThemeService {
         localStorage.setItem(this.settingStore, JSON.stringify(this.setting))
     }
 
-    private onQueryChange(ev: MediaQueryListEvent) {
+    private onQueryChange(this: ThemeService, ev: MediaQueryListEvent) {
         this.systemTheme = ev.matches ? "dark" : "light"
-        if (this.setting.theme) {
+        if (!this.setting.theme) {
             this.theme = this.systemTheme
         }
     }
@@ -59,9 +61,9 @@ export default class ThemeService {
         } else {
             this.setting = {}
         }
-        const darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
-        this.systemTheme = darkQuery.matches ? "dark" : "light"
-        darkQuery.addEventListener("change", (() => { return this.onQueryChange }))
+        this.darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        this.setTheme(this.setting.theme)
+        this.darkQuery.addEventListener("change", this.onQueryChange.bind(this))
     }
 }
 
