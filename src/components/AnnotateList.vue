@@ -6,14 +6,14 @@
       :text.sync="search"
       @onSearch="onSearch"
     />
-    <div class="anno-list" :class="loading ? 'loading' : ''">
+    <div ref="annoList" class="anno-list" :class="loading ? 'loading' : ''">
       <div class="page-item" v-for="(page, index) in data" :key="index">
         <AnnotatePage :data="page" :expand="expand" />
       </div>
       <Pagenation
-        :pageNumber="page"
+        :pageNumber="_page"
         :total="totalPage"
-        @pageUpdate="pageUpdate($event)"
+        @pageUpdate="page = $event"
       />
     </div>
     <FloatButton
@@ -47,7 +47,15 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   pageSize = 15;
   totalPage = 1;
   search = "";
-  page = 1;
+  _page = 1;
+  set page(val: number) {
+    this._page = val;
+    this.pageUpdate(val);
+    this.urlSearchService.set("page", val.toString(), true);
+  }
+  get page() {
+    return this._page;
+  }
   loading = false;
   showToTop = true;
   expand = false;
@@ -56,8 +64,6 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
   pageUpdate(page: number) {
     this.loading = true;
     this.toTop();
-    this.urlSearchService.set("page", page.toString(), true);
-    this.page = page;
     this.expand = !!this.search.match(/(?:^| )expand:[^ ]*/);
     if (this.search != "") {
       this.searchAnno(
@@ -120,11 +126,19 @@ export default class AnnotateList extends mixins(Vue, HypoServiceMixin) {
 
   onSearch() {
     this.urlSearchService.set("search", this.search, true);
-    this.pageUpdate(1);
+    this.page = 1;
   }
   created() {
     this.search = decodeURIComponent(this.urlSearchService.get("search"));
-    this.page = Number.parseInt(this.urlSearchService.get("page") || "1");
+    this.urlSearchService.onPopstate((_, search) => {
+      const parsePage = parseInt(search.get("page") as string);
+      if (parsePage) {
+        this.page = parsePage;
+      } else {
+        this.page = 1;
+      }
+    });
+    this.page = Number.parseInt(this.urlSearchService.get("page")) || 1;
   }
   mounted() {
     let observer = new IntersectionObserver(
