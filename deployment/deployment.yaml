@@ -60,7 +60,7 @@ spec:
     - host: hypothesis.lyine.pw
       http: &http_rules
         paths:
-          - path:
+          - path: /
             pathType: Prefix
             backend:
               service:
