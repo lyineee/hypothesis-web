@@ -58,15 +58,17 @@ metadata:
 spec:
   rules:
     - host: hypothesis.lyine.pw
-      http:
+      http: &http_rules
         paths:
-          - path: /
+          - path:
             pathType: Prefix
             backend:
               service:
                 name: hypothesis-web
                 port:
                   number: 80
+    - host: history.lyine.top
+      http: *http_rules
 
 ---
 # Redirect to https
