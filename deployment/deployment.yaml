@@ -67,7 +67,7 @@ spec:
                 name: hypothesis-web
                 port:
                   number: 80
-    - host: history.lyine.top
+    - host: hypothesis.lyine.top
       http: *http_rules
 
 ---
