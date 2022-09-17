@@ -87,6 +87,8 @@ $on-background: map-get(theme.$palette, "on-background");
   align-items: center;
   justify-content: center;
   overflow-y: hidden;
+  background-color: var(--background-color-primary);
+  color: var(--foreground-color-secondary);
   .login-dialog {
     width: 30%;
     @media screen and (max-width: 900px) {
@@ -121,17 +123,16 @@ $on-background: map-get(theme.$palette, "on-background");
         font-weight: normal;
         font-size: 19px;
         padding: 1.5em 1em 0.5em 0.5em;
-        border: 1px solid #dbdbdb;
+        border: 1px solid var(--background-color-primary-5);
         border-radius: 2px;
-        color: #737373;
-        background-color: #fafafa;
+        color: var(--foreground-color-secondary);
+        background-color: var(--background-color-primary-9);
         line-height: 1;
         width: 100%;
         transition: 0.1s;
         &:focus {
           outline: none;
           box-shadow: 0 0 0 2px #59a7e8;
-          background-color: #fff;
         }
       }
     }
@@ -152,10 +153,9 @@ $on-background: map-get(theme.$palette, "on-background");
       }
       .btn-cancel {
         margin-right: 1em;
-        background-color: theme.darken($background, 2);
-        color: $on-background;
+        background-color: var(--background-color-primary-3);
         &:hover {
-          background-color: theme.darken($background, 5);
+          background-color: var(--background-color-primary-1);
         }
       }
     }
